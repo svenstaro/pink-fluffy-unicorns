@@ -1,5 +1,6 @@
 #include "colors.inc"
 #include "shapes.inc"
+#include "rad_def.inc"
 
 camera {
     location <0, 2, -3>
@@ -14,12 +15,3 @@ sphere {
 }
 
 light_source { <2, 4, -3> color White }
-
-box {
-    <-1, 0, -1>
-    <1, 0.5, 3>
-    texture {
-        pigment { color Red }
-    }
-    rotate y*20
-}
