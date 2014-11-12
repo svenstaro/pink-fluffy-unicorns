@@ -2,7 +2,7 @@
 
 MODE ?= quality
 POVQUALITY =
-POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 +EF100
+POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 +EF100 -GR -GF -GD -GS +GW
 
 ifeq ($(MODE),fast)
 	POVQUALITY = +W640 +H360 +Q9 +A +R2
@@ -13,7 +13,7 @@ endif
 default: render movie
 
 movie:
-	ffmpeg -i media/strobe.ogg -i output/scene%05d.png -pix_fmt yuv422p -y -r 60 -vcodec hevc -threads 0 output/scene.mkv
+	ffmpeg -i media/strobe.ogg -i output/scene%05d.png -pix_fmt yuv422p -y -r 60 -vcodec hevc -acodec copy -threads 0 output/scene.mkv
 
 render:
 	mkdir -p output
