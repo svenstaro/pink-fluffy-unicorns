@@ -2,6 +2,8 @@
 #include "shapes.inc"
 #include "rad_def.inc"
 
+#include "scene/ship.inc"
+
 camera {
     location <0, 2, -3>
     look_at <0, 1, 2>
