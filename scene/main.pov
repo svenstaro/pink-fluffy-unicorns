@@ -4,14 +4,15 @@
 #include "shapes.inc"
 #include "rad_def.inc"
 
-#include "debug.inc"
+#include "textures.inc"
 
 #include "scene/ship.inc"
 
 global_settings { assumed_gamma 2.2 }
 
-#warning Str(clock)
-#warning Str(mod(clock*10000, 28.14*10000)/10000)
+#macro beatLocation()
+    mod((clock+33.96)*10000, 28.14*10000)/(28.14*10000)
+#end
 
 camera {
     location <0, 2, -3>
@@ -21,7 +22,7 @@ camera {
 sphere {
     <0, 1, 2>, 2
     texture {
-        pigment { color rgb <mod((clock+33.96)*10000, 28.14*10000)/(28.14*10000), 1.0, 1.0> }
+        pigment { color rgb <beatLocation(), 1.0, 1.0> }
     }
 }
 
