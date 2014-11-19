@@ -19,11 +19,4 @@ camera {
     look_at <0, 1, 2>
 }
 
-sphere {
-    <0, 1, 2>, 2
-    texture {
-        pigment { color rgb <beatLocation(), 1.0, 1.0> }
-    }
-}
-
 light_source { <2, 4, -3> color White }
