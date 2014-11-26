@@ -1,7 +1,12 @@
 #version 3.7;
 
-#macro Beat_Location()
-    mod((clock+33.96)*10000, 28.14*10000)/(28.14*10000)
+#declare RandomSeed = seed(1337);
+
+#declare Beat1_Start = 33.96;
+#declare Beat1_Period = 28.14;
+
+#macro Beat1()
+    mod((clock + Beat1_Start) * 10000, Beat1_Period * 10000) / (Beat1_Period * 10000)
 #end
 
 #include "colors.inc"
@@ -12,9 +17,11 @@
 #include "golds.inc"
 
 #include "rad_def.inc"
+#include "rand.inc"
 
 #include "scene/ship.inc"
 #include "scene/title.inc"
+#include "scene/starfield.inc"
 
 global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
