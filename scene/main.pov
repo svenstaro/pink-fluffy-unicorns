@@ -27,8 +27,8 @@ global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
 
 camera {
-    location <0, 0, -3.5>
-    look_at <0, 0, 0>
+    location <0, 0, -3.5+clock>
+    direction <0, 0, 1>
 }
 
 #for (i , -1, 1, 1)
@@ -39,3 +39,7 @@ camera {
 #end 
 
 light_source { <0, 0, -3> color White }
+
+fog {
+    distance 100
+}
