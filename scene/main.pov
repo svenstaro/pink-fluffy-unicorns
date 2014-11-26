@@ -29,5 +29,5 @@ camera {
     location <0, 0, -3.5>
     look_at <0, 0, 0>
 }
-light_source { <0, 0, -3> color White }
 
+light_source { <0, 0, -3> color White }
