@@ -1,5 +1,7 @@
 #version 3.7;
 
+#declare RandomSeed = seed(1337);
+
 #declare Beat1_Start = 33.96;
 #declare Beat1_Period = 28.14;
 
@@ -15,9 +17,11 @@
 #include "golds.inc"
 
 #include "rad_def.inc"
+#include "rand.inc"
 
 #include "scene/ship.inc"
 #include "scene/title.inc"
+#include "scene/starfield.inc"
 
 global_settings { assumed_gamma 2.2 }
 
