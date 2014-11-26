@@ -1,18 +1,35 @@
-object {
-    Circle_Text(
-    "timrom.ttf", // Font
-    "ROFL",// Text
-    0.75 , // Size
-    0.025, // Spacing
-    15.00, // Thickness
-    1.50,  // Radius
-    1,     // Inverted
-    Align_Left,// od. Align_Right, Align_Center
-    180)     // Angle
+text {
+    ttf "timrom.ttf", // Font
+    "L", // Text
+    40,
+    0
     texture{ Polished_Chrome
         normal { bumps 0.5 scale 0.005}
-        finish{specular 1 reflection 0.25}
+        finish{specular 1 reflection 0.55}
     }
-    rotate<0,0,360*clock*10000/(28.14*10000*4)>
-    translate<0,0,0>
+    translate<-0.7+clock*10/(28.14*10*20),0.8*sin(1/4*pi-clock*10/(28.14*10*3)),0>
+}
+
+text {
+    ttf "timrom.ttf", // Font
+    "O", // Text
+    40,
+    0
+    texture{ Polished_Chrome
+        normal { bumps 0.5 scale 0.005}
+        finish{specular 1 reflection 0.55}
+    }
+    translate<-1.5+clock*10/(28.14*10*20),0.8*sin(2/4*pi-clock*10/(28.14*10*3)),0>
+}
+
+text {
+    ttf "timrom.ttf", // Font
+    "L", // Text
+    40,
+    0
+    texture{ Polished_Chrome
+        normal { bumps 0.5 scale 0.005}
+        finish{specular 1 reflection 0.55}
+    }
+    translate<-2.3+clock*10/(28.14*10*20),0.8*sin(3/4*pi-clock*10/(28.14*10*3)),0>
 }
