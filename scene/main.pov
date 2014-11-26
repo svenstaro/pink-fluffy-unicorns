@@ -1,5 +1,9 @@
 #version 3.7;
 
+#macro beatLocation()
+    mod((clock+33.96)*10000, 28.14*10000)/(28.14*10000)
+#end
+
 #include "colors.inc"
 #include "shapes.inc"
 #include "rad_def.inc"
@@ -10,9 +14,6 @@
 
 global_settings { assumed_gamma 2.2 }
 
-#macro beatLocation()
-    mod((clock+33.96)*10000, 28.14*10000)/(28.14*10000)
-#end
 
 camera {
     location <0, 2, -3>
