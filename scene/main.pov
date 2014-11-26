@@ -1,7 +1,10 @@
 #version 3.7;
 
-#macro Beat_Location()
-    mod((clock+33.96)*10000, 28.14*10000)/(28.14*10000)
+#declare Beat1_Start = 33.96;
+#declare Beat1_Period = 28.14;
+
+#macro Beat1()
+    mod((clock + Beat1_Start) * 10000, Beat1_Period * 10000) / (Beat1_Period * 10000)
 #end
 
 #include "colors.inc"
