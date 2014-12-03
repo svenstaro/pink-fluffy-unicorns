@@ -9,6 +9,6 @@
         no_shadow
         rotate <0, 0, 10*clock>
         scale Beat1()+0.5
-        translate VRand_In_Box(<-50, -50, 0>, <50, 50, 1500>, RandomSeed)
+        translate VRand_In_Box(<-50, -50, 0>, <50, 50, 2000>, RandomSeed)
     }
 #end

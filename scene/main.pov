@@ -47,7 +47,7 @@ camera {
         #local Fadein = 1;
         #local Fadeout = mod(clock, 100);
         #include "scene/title.inc"
-    #range (180, )
+    #range (180, 240)
     #break
 #end
 
