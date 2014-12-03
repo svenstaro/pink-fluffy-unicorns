@@ -2,7 +2,7 @@
 
 MODE ?= fast
 POVQUALITY =
-POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 +EF200 -GR +GF -GD -GS -GW
+POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 +EF1 -GR +GF -GD -GS -GW
 
 ifeq ($(MODE),high)
 	POVQUALITY = +W1920 +H1080 +Q9 +A +R2 
@@ -20,7 +20,7 @@ render: clean
 	povray  +Ooutput/scene.png $(POVSETTINGS) $(POVQUALITY) scene/main.pov
 
 clean:
-	rm -rf output/
+	rm -rf output/*
 
 play: default
 	mpv output/scene.mkv
