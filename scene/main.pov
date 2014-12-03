@@ -38,15 +38,16 @@ camera {
 #end
 
 #switch (clock)
-    #range (0,99)
-        #local Fadein = 1
+    #range (60,90)
+        #local Fadein = 1;
         #local Fadeout = 0;
         #include "scene/title.inc"
     #break
-    #range (100, 199)
-        #local Fadein = 1
+    #range (90, 180)
+        #local Fadein = 1;
         #local Fadeout = mod(clock, 100);
         #include "scene/title.inc"
+    #range (180, )
     #break
 #end
 
