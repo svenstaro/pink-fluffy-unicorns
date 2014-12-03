@@ -32,7 +32,7 @@ camera {
 }
 
 #for (i , -1, 1, 1)
-    light_source {  <i*3, 0, -1>
+    light_source {  <i*3, 0, -1+clock>
                     rgb <1,1,1>
                     fade_distance 2
                     fade_power 1}
