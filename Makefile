@@ -1,8 +1,15 @@
-.PHONY: default clean render movie
+.PHONY: default clean render movie watch play
 
 MODE ?= fast
-POVQUALITY =
-POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 +SF1 +EF2000 -GR +GF -GD -GS -GW
+POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW
+START_FRAME = 1
+END_FRAME = 400
+OUTDIR = output
+
+# Don't change this
+PREFIX = scene
+FRAMES = $(shell echo "{$(START_FRAME)..$(END_FRAME)}")
+FRAME_TARGETS = $(shell printf "$(OUTDIR)/$(PREFIX)%05d.png " $(FRAMES))
 
 ifeq ($(MODE),high)
 	POVQUALITY = +W1920 +H1080 +Q9 +A +R2 
@@ -10,20 +17,20 @@ else
 	POVQUALITY = +W640 +H360 +Q9 +A +R2
 endif
 
-default: render movie
+default: $(FRAME_TARGETS) movie
 
 movie:
-	ffmpeg -i media/strobe.ogg -framerate 60 -i output/scene%05d.png -y -r 60 -vcodec libx264 -acodec copy -threads 0 output/scene.mkv
+	ffmpeg -i media/strobe.ogg -framerate 60 -i $(OUTDIR)/scene%05d.png -y -r 60 -vcodec libx264 -acodec copy -threads 0 $(OUTDIR)/scene.mkv
 
-render:
-	mkdir -p output
-	povray  +Ooutput/scene.png $(POVSETTINGS) $(POVQUALITY) scene/main.pov
+$(OUTDIR)/scene%.png: scene/*
+	mkdir -p $(OUTDIR)
+	povray  +O$(OUTDIR)/scene.png +SF$* +EF$* $(POVSETTINGS) $(POVQUALITY) scene/main.pov
 
 clean:
-	rm -rf output/*
+	rm -rf $(OUTDIR)/*
 
 play: default
-	mpv --osd-level 3 output/scene.mkv
+	mpv --osd-level 3 $(OUTDIR)/scene.mkv
 
 watch:
 	while true ; do inotifywait -e close_write,moved_to,create ./scene; make render; done;
