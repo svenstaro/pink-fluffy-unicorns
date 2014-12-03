@@ -3,7 +3,7 @@
 MODE ?= fast
 POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW
 START_FRAME = 1
-END_FRAME = 400
+END_FRAME = 2000
 OUTDIR = output
 
 # Don't change this
@@ -14,7 +14,7 @@ FRAME_TARGETS = $(shell printf "$(OUTDIR)/$(PREFIX)%05d.png " $(FRAMES))
 ifeq ($(MODE),high)
 	POVQUALITY = +W1920 +H1080 +Q9 +A +R2 
 else
-	POVQUALITY = +W640 +H360 +Q9 +A +R2
+	POVQUALITY = +W320 +H180 +Q9 +A +R2
 endif
 
 default: $(FRAME_TARGETS) movie
