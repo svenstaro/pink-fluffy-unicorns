@@ -24,3 +24,6 @@ clean:
 
 play: default
 	mpv output/scene.mkv
+
+watch:
+	while true ; do inotifywait -e close_write,moved_to,create ./scene; make render; done;
