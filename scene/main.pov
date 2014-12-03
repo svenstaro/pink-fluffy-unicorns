@@ -20,7 +20,6 @@
 #include "rand.inc"
 
 #include "scene/ship.inc"
-#include "scene/title.inc"
 #include "scene/starfield.inc"
 
 global_settings { assumed_gamma 2.2 }
@@ -36,7 +35,21 @@ camera {
                     rgb <1,1,1>
                     fade_distance 2
                     fade_power 1}
-#end 
+#end
+
+#switch (clock)
+    #range (60,90)
+        #local Fadein = 1;
+        #local Fadeout = 0;
+        #include "scene/title.inc"
+    #break
+    #range (90, 180)
+        #local Fadein = 1;
+        #local Fadeout = mod(clock, 100);
+        #include "scene/title.inc"
+    #range (180, )
+    #break
+#end
 
 light_source { <0, 0, -3> color White }
 
