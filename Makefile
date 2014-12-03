@@ -30,7 +30,7 @@ clean:
 	rm -rf $(OUTDIR)/*
 
 play: default
-	mpv --osd-level 3 $(OUTDIR)/scene.mkv
+	mpv --osd-level 3 --osd-fractions $(OUTDIR)/scene.mkv
 
 watch:
 	while true ; do inotifywait -e close_write,moved_to,create ./scene; make render; done;
