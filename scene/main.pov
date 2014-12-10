@@ -62,7 +62,7 @@ camera {
         #local Fadeout = 0;
         #include "scene/authors.inc"
     #break
-    #range (840, 960)
+    #range (840, 1080)
         #local Fadein = 0;
         #local Fadeout = (1/240)*mod(clock+120, 240);
         #include "scene/authors.inc"
