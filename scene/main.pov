@@ -38,29 +38,34 @@ camera {
 #end
 
 #switch (clock)
-    #range (0,119)
+    #range (0,120)
         #local Fadein = 1-(1/120)*clock;
         #local Fadeout = 0;
-        #local Fadeup = 0;
         #include "scene/title.inc"
     #break
-    #range (120, 239)
+    #range (120, 240)
         #local Fadein = 0;
         #local Fadeout = 0;
-        #local Fadeup = 0;
         #include "scene/title.inc"
     #break
-    #range (240, 479)
+    #range (240, 480)
         #local Fadein = 0;
         #local Fadeout = (1/240)*mod(clock, 240);
-        #local Fadeup = 0;
         #include "scene/title.inc"
+    #range (360, 720)
+        #local Fadein = 1-(1/360)*mod(clock, 360);
+        #local Fadeout = 0;
+        #include "scene/authors.inc"
     #break
-    #range (480, 720)
+    #range (720,840)
         #local Fadein = 0;
-        #local Fadeout = 1+(1/240)*mod(clock, 240);
-        #local Fadeup = (1/240)*mod(clock, 240);
-        #include "scene/title.inc"
+        #local Fadeout = 0;
+        #include "scene/authors.inc"
+    #break
+    #range (840, 960)
+        #local Fadein = 0;
+        #local Fadeout = (1/240)*mod(clock+120, 240);
+        #include "scene/authors.inc"
     #break
 #end
 
