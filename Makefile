@@ -1,7 +1,7 @@
 .PHONY: default clean render movie watch play
 
 MODE ?= fast
-POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW -GA
+POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW
 START_FRAME = 0
 END_FRAME = 960
 OUTDIR = output
