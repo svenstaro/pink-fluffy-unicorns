@@ -2,8 +2,8 @@
 
 MODE ?= fast
 POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW
-START_FRAME = 0
-END_FRAME = 960
+START_FRAME = 110
+END_FRAME = 120
 OUTDIR = output
 
 # Don't change this
@@ -20,17 +20,17 @@ endif
 default: $(FRAME_TARGETS) movie
 
 movie:
-	ffmpeg -i media/strobe.ogg -framerate 60 -i $(OUTDIR)/scene%05d.png -y -r 60 -vcodec libx264 -acodec copy -threads 0 $(OUTDIR)/scene.mkv
+	ffmpeg -i media/strobe.ogg -framerate 60 -i $(OUTDIR)/$(PREFIX)%05d.png -y -r 60 -vcodec libx264 -acodec copy -threads 0 $(OUTDIR)/scene.mkv
 
-$(OUTDIR)/scene%.png: scene/*
+$(OUTDIR)/$(PREFIX)%.png: scene/*
 	mkdir -p $(OUTDIR)
-	povray  +O$(OUTDIR)/scene.png +SF$* +EF$* $(POVSETTINGS) $(POVQUALITY) scene/main.pov
+	povray  +O$(OUTDIR)/$(PREFIX).png +SF$* +EF$* $(POVSETTINGS) $(POVQUALITY) scene/main.pov
 
 clean:
 	rm -rf $(OUTDIR)/*
 
-play: default
-	mpv --osd-level 3 --osd-fractions $(OUTDIR)/scene.mkv
+play:
+	mpv --osd-level 3 --osd-fractions $(OUTDIR)/$(PREFIX).mkv
 
 watch:
 	while true ; do inotifywait -e close_write,moved_to,create ./scene; make render; done;

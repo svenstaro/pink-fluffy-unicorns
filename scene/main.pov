@@ -21,6 +21,7 @@
 
 #include "scene/ship.inc"
 #include "scene/starfield.inc"
+#include "scene/title.inc"
 
 global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
@@ -31,46 +32,24 @@ camera {
 }
 
 #for (i , -1, 1, 1)
-    light_source {  <i*3, 0, -1+clock>
+    light_source { <i*3, 0, -1+clock>
                     rgb <1,1,1>
                     fade_distance 2
-                    fade_power 1}
-#end
-
-#switch (clock)
-    #range (0,120)
-        #local Fadein = 1-(1/120)*clock;
-        #local Fadeout = 0;
-        #include "scene/title.inc"
-    #break
-    #range (120, 240)
-        #local Fadein = 0;
-        #local Fadeout = 0;
-        #include "scene/title.inc"
-    #break
-    #range (240, 480)
-        #local Fadein = 0;
-        #local Fadeout = (1/240)*mod(clock, 240);
-        #include "scene/title.inc"
-    #range (360, 720)
-        #local Fadein = 1-(1/360)*mod(clock, 360);
-        #local Fadeout = 0;
-        #include "scene/authors.inc"
-    #break
-    #range (720,840)
-        #local Fadein = 0;
-        #local Fadeout = 0;
-        #include "scene/authors.inc"
-    #break
-    #range (840, 1080)
-        #local Fadein = 0;
-        #local Fadeout = (1/240)*mod(clock+120, 240);
-        #include "scene/authors.inc"
-    #break
+                    fade_power 1 }
 #end
 
 light_source { <0, 0, -3> color White }
 
 fog {
-    distance 100
+    #switch (clock)
+        #range (0,200)
+            distance 100
+        #break
+        #range (200,600)
+            distance Interpolate(clock, 200, 600, 0, 100, 1)
+        #break
+        #else
+            distance 100
+        #break
+    #end
 }
