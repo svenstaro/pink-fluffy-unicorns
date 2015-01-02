@@ -1,146 +1,105 @@
-#local title_text = text {
-    ttf "timrom.ttf" "Test" 4.5, 0
-    texture{ Polished_Chrome
-        normal { bumps 0.5 scale 0.005}
-        finish{specular 1 reflection 0.55}
+#local title = union {
+    text {
+        ttf "timrom.ttf" "Test" 4.5, 0
+        texture{ Polished_Chrome
+            normal { bumps 0.5 scale 0.005}
+            finish{specular 1 reflection 0.55}
+        }
+        translate<-0.9, 0, 0>
+    }
+    text {
+        ttf "timrom.ttf", "WiSe 2014/2015", 9, 0
+        texture{ Polished_Chrome
+            normal { bumps 0.5 scale 0.005}
+            finish{specular 1 reflection 0.55}
+        }
+        scale 0.5
+        translate<-1.8, -1, 0>
     }
 }
 
-#local intro_text2 = text {
-    ttf "timrom.ttf", // Font
-    "WiSe 2014/2015", // Text
-    9,
-    0
-    texture{ Polished_Chrome
-        normal { bumps 0.5 scale 0.005}
-        finish{specular 1 reflection 0.55}
+#local authors = union {
+    text {
+        ttf "timrom.ttf", "Authors: ", 4.5, 0
+        texture{ Polished_Chrome
+            normal { bumps 0.5 scale 0.005}
+            finish{specular 1 reflection 0.55}
+        }
+        translate<-5, 1, 0>
+        scale 0.4
     }
-    scale 0.5
-}
-
-#local authors_text = text {
-    ttf "timrom.ttf", // Font
-    "Authors: ", // Text
-    4.5,
-    0
-    texture{ Polished_Chrome
-        normal { bumps 0.5 scale 0.005}
-        finish{specular 1 reflection 0.55}
+    text {
+        ttf "timrom.ttf", "Arne Beer", 4.5, 0
+        texture{ Polished_Chrome
+            normal { bumps 0.5 scale 0.005}
+            finish{specular 1 reflection 0.55}
+        }
+        translate<-2, 0, 0>
+        scale 0.4
     }
-    scale 0.4
-}
-
-#local author_arne = text {
-    ttf "timrom.ttf", // Font
-    "Arne Beer", // Text
-    4.5,
-    0
-    texture{ Polished_Chrome
-        normal { bumps 0.5 scale 0.005}
-        finish{specular 1 reflection 0.55}
+    text {
+        ttf "timrom.ttf", "Rafael Epplee", 4.5, 0
+        texture{ Polished_Chrome
+            normal { bumps 0.5 scale 0.005}
+            finish{specular 1 reflection 0.55}
+        }
+        translate<-2.7, -1, 0>
+        scale 0.4
     }
-    scale 0.4
-}
-
-#local author_rafael = text {
-    ttf "timrom.ttf", // Font
-    "Rafael Epplee", // Text
-    4.5,
-    0
-    texture{ Polished_Chrome
-        normal { bumps 0.5 scale 0.005}
-        finish{specular 1 reflection 0.55}
+    text {
+        ttf "timrom.ttf", "Sven-Hendrik Haase", 4.5, 0
+        texture{ Polished_Chrome
+            normal { bumps 0.5 scale 0.005}
+            finish{specular 1 reflection 0.55}
+        }
+        translate<-4, -2, 0>
+        scale 0.4
     }
-    scale 0.4
-}
-
-#local author_sven = text {
-    ttf "timrom.ttf", "Sven-Hendrik Haase", 4.5, 0
-    texture{ Polished_Chrome
-        normal { bumps 0.5 scale 0.005}
-        finish{specular 1 reflection 0.55}
-    }
-    scale 0.4
 }
 
 #switch (clock)
     #range (0,120)
         #local Fadein = 1-(1/120)*clock;
         #local Fadeout = 0;
-        object { title_text
-            translate<-0.9,0,clock+40*Fadein-5*Fadeout>
+        object { title
+            translate<0,0,clock+40*Fadein-5*Fadeout>
         }
-        object { intro_text2 
-            translate<-1.8,-1,clock+40*Fadein-5*Fadeout>
-        }
-    #break
+        #break
     #range (120, 240)
-        #local Fadein = 0;
-        #local Fadeout = 0;
-        object { title_text
-            translate<-0.9,0,clock+40*Fadein-5*Fadeout>
+        object { title
+            translate<0,0,clock>
         }
-        object { intro_text2 
-            translate<-1.8,-1,clock+40*Fadein-5*Fadeout>
-        }
-    #break
+        #break
     #range (240, 480)
         #local Fadein = 0;
         #local Fadeout = (1/240)*mod(clock, 240);
-        object { title_text
-            translate<-0.9,0,clock+40*Fadein-5*Fadeout>
+        object { title
+            translate<0,0,clock+40*Fadein-8*Fadeout>
         }
-        object { intro_text2 
-            translate<-1.8,-1,clock+40*Fadein-5*Fadeout>
-        }
-    #range (360, 720)
-        #local Fadein = 1-(1/360)*mod(clock, 360);
+#end
+
+#switch (clock)
+    #range (360, 480)
+        #local Fadein = 1-(1/120)*mod(clock, 120);
         #local Fadeout = 0;
-        object { authors_text 
-            translate<-2,0.6,clock+15*Fadein-5*Fadeout>
+        object { authors
+            translate<0,0,clock+40*Fadein-5*Fadeout>
         }
-        object { author_arne 
-            translate<-0.9,0,clock+15*Fadein-5*Fadeout>
-        }
-        object { author_rafael
-            translate<-1.2,-0.6,clock+15*Fadein-5*Fadeout>
-        }
-        object { author_sven 
-            translate<-1.7,-1.2,clock+15*Fadein-5*Fadeout>
-        }
-    #break
-    #range (720,840)
+        #break
+    #range (479,599)
         #local Fadein = 0;
         #local Fadeout = 0;
-        object { authors_text 
-            translate<-2,0.6,clock+15*Fadein-5*Fadeout>
+        object { authors
+            translate<0,0,clock>
         }
-        object { author_arne 
-            translate<-0.9,0,clock+15*Fadein-5*Fadeout>
-        }
-        object { author_rafael
-            translate<-1.2,-0.6,clock+15*Fadein-5*Fadeout>
-        }
-        object { author_sven 
-            translate<-1.7,-1.2,clock+15*Fadein-5*Fadeout>
-        }
-    #break
-    #range (840, 1080)
+        #break
+    #range (600, 840)
         #local Fadein = 0;
         #local Fadeout = (1/240)*mod(clock+120, 240);
-        object { authors_text 
-            translate<-2,0.6,clock+15*Fadein-5*Fadeout>
+        object { authors
+            translate<0,0,clock+20*Fadein-8*Fadeout>
         }
-        object { author_arne 
-            translate<-0.9,0,clock+15*Fadein-5*Fadeout>
-        }
-        object { author_rafael
-            translate<-1.2,-0.6,clock+15*Fadein-5*Fadeout>
-        }
-        object { author_sven 
-            translate<-1.7,-1.2,clock+15*Fadein-5*Fadeout>
-        }
-    #break
+        #break
 #end
 
 
