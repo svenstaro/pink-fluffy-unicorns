@@ -43,7 +43,7 @@ light_source { <0, 0, -3> color White }
 fog {
     #switch (clock)
         #range (0,200)
-            distance 0.0001
+            distance 100
         #break
         #range (200,600)
             distance Interpolate(clock, 200, 600, 0, 100, 1)
@@ -51,4 +51,5 @@ fog {
         #else
             distance 100
         #break
+    #end
 }

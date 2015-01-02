@@ -2,8 +2,8 @@
 
 MODE ?= fast
 POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW
-START_FRAME = 0
-END_FRAME = 960
+START_FRAME = 110
+END_FRAME = 120
 OUTDIR = output
 
 # Don't change this
