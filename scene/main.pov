@@ -62,15 +62,17 @@ fog {
     #switch (clock)
         // Scene fade-in
         #range (0, 800)
-            distance Interpolate(clock, 0, 800, 0, 100, 1)
+            distance Interpolate(clock, 0, 800, 0.01, 100, 1)
         #break
         #range (800, 1800)
             distance 100
         #break
         // Break down
         #range (1800, 2200)
-            distance Interpolate(clock, 1800, 2200, 0, 100, 1)
-            color Interpolate(clock, 1800, 2200, White, Black, 1)
+            distance Interpolate(clock, 1800, 2400, 0.01, 100, 1)
+            #local shade = Interpolate(clock, 1800, 2400, White, Black, 1);
+            #local trans = Interpolate(clock, 1800, 2400, 0, 1, 1);
+            color rgbt<shade.red, shade.blue, shade.green, trans>
         #break
     #end
 }
