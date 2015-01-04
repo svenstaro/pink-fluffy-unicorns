@@ -32,34 +32,8 @@ camera {
 }
 
 #switch (clock)
-    #range (0,120)
-        #local Fadein = 1-(1/120)*clock;
-        #local Fadeout = 0;
+    #range (0,880)
         #include "scene/title.inc"
-    #break
-    #range (120, 240)
-        #local Fadein = 0;
-        #local Fadeout = 0;
-        #include "scene/title.inc"
-    #break
-    #range (240, 480)
-        #local Fadein = 0;
-        #local Fadeout = (1/240)*mod(clock, 240);
-        #include "scene/title.inc"
-    #range (360, 720)
-        #local Fadein = 1-(1/360)*mod(clock, 360);
-        #local Fadeout = 0;
-        #include "scene/authors.inc"
-    #break
-    #range (720,840)
-        #local Fadein = 0;
-        #local Fadeout = 0;
-        #include "scene/authors.inc"
-    #break
-    #range (840, 1080)
-        #local Fadein = 0;
-        #local Fadeout = (1/240)*mod(clock+120, 240);
-        #include "scene/authors.inc"
     #break
 #end
 
@@ -73,6 +47,7 @@ light_source {
 
 fog {
     #switch (clock)
+        // Scene fade-in
         #range (0,400)
             distance Interpolate(clock, 0, 400, 0, 100, 1)
         #break
