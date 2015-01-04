@@ -20,7 +20,6 @@
 #include "rand.inc"
 
 #include "scene/ship.inc"
-#include "scene/starfield.inc"
 #include "scene/title.inc"
 
 global_settings { assumed_gamma 2.2 }
@@ -38,6 +37,12 @@ camera {
 }
 
 #switch (clock)
+    #range (0, 1800)
+        #include "scene/starfield.inc"
+    #break
+#end
+
+#switch (clock)
     #range (800, 1680)
         #include "scene/title.inc"
     #break
@@ -53,9 +58,12 @@ fog {
         #range (0, 800)
             distance Interpolate(clock, 0, 800, 0, 100, 1)
         #break
+        #range (1800, 2200)
+            distance Interpolate(clock, 1800, 2200, 0, 100, 1)
+            color Interpolate(clock, 1800, 2200, White, Black, 1)
+        #break
         #else
             distance 30
         #break
     #end
 }
-
