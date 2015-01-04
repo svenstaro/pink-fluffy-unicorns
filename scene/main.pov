@@ -61,6 +61,7 @@ camera {
         #local Fadeout = (1/240)*mod(clock+120, 240);
         #include "scene/authors.inc"
     #break
+#end
 
 light_source {
     <0, 0, -5>, rgb<0.9, 0.9, 1.0>*4
