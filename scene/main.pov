@@ -56,7 +56,7 @@ camera {
 #end
 
 light_source {
-    <0, 0, -5*clock>, color White
+    <0, 0, -5*clock>, color <2, 2, 2>
 }
 
 fog {
