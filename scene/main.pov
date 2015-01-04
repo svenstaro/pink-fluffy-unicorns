@@ -48,6 +48,12 @@ camera {
     #break
 #end
 
+#switch (clock)
+    #range (1800, 2500)
+        #include "scene/funky-sky.inc"
+    #break
+#end
+
 light_source {
     <0, 0, -5*clock>, color White
 }
@@ -58,12 +64,13 @@ fog {
         #range (0, 800)
             distance Interpolate(clock, 0, 800, 0, 100, 1)
         #break
+        #range (800, 1800)
+            distance 100
+        #break
+        // Break down
         #range (1800, 2200)
             distance Interpolate(clock, 1800, 2200, 0, 100, 1)
             color Interpolate(clock, 1800, 2200, White, Black, 1)
-        #break
-        #else
-            distance 30
         #break
     #end
 }
