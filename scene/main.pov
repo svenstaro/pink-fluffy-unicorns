@@ -19,7 +19,6 @@
 #include "rad_def.inc"
 #include "rand.inc"
 
-#include "scene/ship.inc"
 #include "scene/title.inc"
 
 global_settings { assumed_gamma 2.2 }
@@ -51,6 +50,7 @@ camera {
 #switch (clock)
     #range (1800, 2500)
         #include "scene/funky-sky.inc"
+        #include "scene/ship.inc"
     #break
 #end
 
