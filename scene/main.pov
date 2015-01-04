@@ -30,13 +30,6 @@ camera {
     direction <0, 0, 1>
 }
 
-#for (i , -1, 1, 1)
-    light_source {  <i*3, 0, -1+clock>
-                    rgb <1,1,1>
-                    fade_distance 2
-                    fade_power 1}
-#end
-
 #switch (clock)
     #range (0,120)
         #local Fadein = 1-(1/120)*clock;
@@ -69,7 +62,13 @@ camera {
     #break
 #end
 
-light_source { <0, 0, -3> color White }
+light_source {
+    <0, 0, -5>, rgb<0.9, 0.9, 1.0>*4
+    area_light <40, 0, 0>, <0, 40, 0>, 10, 10
+    adaptive 1
+    fade_distance 30
+    fade_power 1
+}
 
 fog {
     distance 100
