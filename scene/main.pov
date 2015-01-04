@@ -21,6 +21,7 @@
 
 #include "scene/ship.inc"
 #include "scene/starfield.inc"
+#include "scene/title.inc"
 
 global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
@@ -60,7 +61,6 @@ camera {
         #local Fadeout = (1/240)*mod(clock+120, 240);
         #include "scene/authors.inc"
     #break
-#end
 
 light_source {
     <0, 0, -5>, rgb<0.9, 0.9, 1.0>*4
@@ -71,5 +71,13 @@ light_source {
 }
 
 fog {
-    distance 100
+    #switch (clock)
+        #range (0,200)
+            distance Interpolate(clock, 0, 200, 0, 100, 1)
+        #break
+        #else
+            distance 30
+        #break
+    #end
 }
+
