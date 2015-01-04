@@ -131,7 +131,7 @@ union {
     scale 0.25
     rotate 30*y
     rotate -10*x
-    translate <-1.5, 0, clock>
+    translate <0, 0, clock>
 }
 
 

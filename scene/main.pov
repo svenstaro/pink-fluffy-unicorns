@@ -27,8 +27,14 @@ global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
 
 camera {
-    location <0, 0, -3.5+clock>
-    direction <0, 0, 1>
+    location <0, 0, -10>
+    look_at 0
+    #switch (clock)
+        #range (2000, 3000)
+            rotate mod(clock, 360)*y
+        #break
+    #end
+    translate <0, 0, clock>
 }
 
 #switch (clock)
