@@ -68,7 +68,7 @@ fog {
             distance 100
         #break
         // Break down
-        #range (1800, 2200)
+        #range (1800, 2400)
             distance Interpolate(clock, 1800, 2400, 0.01, 100, 1)
             #local shade = Interpolate(clock, 1800, 2400, White, Black, 1);
             #local trans = Interpolate(clock, 1800, 2400, 0, 1, 1);
