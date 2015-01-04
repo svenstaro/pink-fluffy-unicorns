@@ -58,44 +58,44 @@
 }
 
 #switch (clock)
-    #range (0,120)
-        #local Fadein = 1-(1/120)*clock;
+    #range (800, 920)
+        #local Fadein = 1-(1/920)*clock;
         #local Fadeout = 0;
         object { title
             translate<0,0,clock+40*Fadein-5*Fadeout>
         }
         #break
-    #range (120, 240)
+    #range (920, 1040)
         object { title
             translate<0,0,clock>
         }
         #break
-    #range (240, 480)
+    #range (1040, 1280)
         #local Fadein = 0;
-        #local Fadeout = (1/240)*mod(clock, 240);
+        #local Fadeout = (1/240)*mod(clock, 1040);
         object { title
             translate<0,0,clock+40*Fadein-8*Fadeout>
         }
 #end
 
 #switch (clock)
-    #range (360, 480)
-        #local Fadein = 1-(1/120)*mod(clock, 120);
+    #range (1160, 1280)
+        #local Fadein = 1-(1/1160)*mod(clock, 1280);
         #local Fadeout = 0;
         object { authors
             translate<0,0,clock+40*Fadein-5*Fadeout>
         }
         #break
-    #range (479,599)
+    #range (1280, 1400)
         #local Fadein = 0;
         #local Fadeout = 0;
         object { authors
             translate<0,0,clock>
         }
         #break
-    #range (600, 840)
+    #range (1400, 1640)
         #local Fadein = 0;
-        #local Fadeout = (1/240)*mod(clock+120, 240);
+        #local Fadeout = (1/1400)*mod(clock+1160, 1400);
         object { authors
             translate<0,0,clock+20*Fadein-8*Fadeout>
         }

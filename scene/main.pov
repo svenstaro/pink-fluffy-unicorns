@@ -32,24 +32,20 @@ camera {
 }
 
 #switch (clock)
-    #range (0,880)
+    #range (800, 1680)
         #include "scene/title.inc"
     #break
 #end
 
 light_source {
-    <0, 0, -5>, rgb<0.9, 0.9, 1.0>*4
-    area_light <40, 0, 0>, <0, 40, 0>, 10, 10
-    adaptive 1
-    fade_distance 30
-    fade_power 1
+    <0, 0, -5*clock>, color White
 }
 
 fog {
     #switch (clock)
         // Scene fade-in
-        #range (0,400)
-            distance Interpolate(clock, 0, 400, 0, 100, 1)
+        #range (0, 800)
+            distance Interpolate(clock, 0, 800, 0, 100, 1)
         #break
         #else
             distance 30
