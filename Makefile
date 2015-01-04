@@ -35,4 +35,4 @@ play:
 	mpv --osd-level 3 --osd-fractions $(OUTDIR)/$(PREFIX).mkv
 
 watch:
-	while true ; do inotifywait -e close_write,moved_to,create ./scene; make render; done;
+	while true ; do inotifywait -e close_write,moved_to,create ./scene; make -j10; done;
