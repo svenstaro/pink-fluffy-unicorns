@@ -73,8 +73,8 @@ light_source {
 
 fog {
     #switch (clock)
-        #range (0,200)
-            distance Interpolate(clock, 0, 200, 0, 100, 1)
+        #range (0,400)
+            distance Interpolate(clock, 0, 400, 0, 100, 1)
         #break
         #else
             distance 30
