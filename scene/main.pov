@@ -47,6 +47,7 @@ camera {
     #break
 #end
 
+// Break down
 #switch (clock)
     #range (1800, 2500)
         #include "scene/funky-sky.inc"
