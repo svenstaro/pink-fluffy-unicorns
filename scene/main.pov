@@ -24,19 +24,30 @@
 global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
 
+#local start_part1_fade = 0;
+#local end_part1_fade = 800;
+#local start_break_down_fade = 1800;
+#local end_break_down_fade = 2400;
+#local start_part2_fade = 4920;
+#local end_part2_fade = 5100;
+#local end_song = 12724;
+
 camera {
     location <0, 0, -10>
     look_at 0
     #switch (clock)
-        #range (2000, 3000)
-            rotate mod(clock, 360)*y
+        #range (2500, 5000)
+            rotate mod(clock/2, 360)*y
         #break
     #end
     translate <0, 0, clock>
 }
 
 #switch (clock)
-    #range (0, 1800)
+    #range (0, start_break_down_fade)
+        #include "scene/starfield.inc"
+    #break
+    #range (start_part2_fade, end_song)
         #include "scene/starfield.inc"
     #break
 #end
@@ -49,7 +60,7 @@ camera {
 
 // Break down
 #switch (clock)
-    #range (1800, 2500)
+    #range (1800, 5000)
         #include "scene/funky-sky.inc"
         #include "scene/ship.inc"
     #break
@@ -61,19 +72,30 @@ light_source {
 
 fog {
     #switch (clock)
-        // Scene fade-in
-        #range (0, 800)
-            distance Interpolate(clock, 0, 800, 0.01, 100, 1)
+        // Part1 fade-in
+        #range (start_part1_fade, end_part1_fade)
+            distance Interpolate(clock, start_part1_fade, end_part1_fade, 0.01, 100, 1)
         #break
-        #range (800, 1800)
+
+        #range (end_part1_fade, start_break_down_fade)
             distance 100
         #break
+
         // Break down
-        #range (1800, 2400)
-            distance Interpolate(clock, 1800, 2400, 0.01, 100, 1)
-            #local shade = Interpolate(clock, 1800, 2400, White, Black, 1);
-            #local trans = Interpolate(clock, 1800, 2400, 0, 1, 1);
+        #range (start_break_down_fade, end_break_down_fade)
+            distance Interpolate(clock, start_break_down_fade, end_break_down_fade, 0.01, 100, 1)
+            #local shade = Interpolate(clock, start_break_down_fade, end_break_down_fade, White, Black, 1);
+            #local trans = Interpolate(clock, start_break_down_fade, end_break_down_fade, 0, 1, 1);
             color rgbt<shade.red, shade.blue, shade.green, trans>
+        #break
+
+        // Part2 fade-in
+        #range (start_part2_fade, end_part2_fade)
+            distance Interpolate(clock, start_part1_fade, end_part2_fade, 0.01, 100, 1)
+        #break
+
+        #range (end_part2_fade, start_break_down_fade)
+            distance 100
         #break
     #end
 }
