@@ -5,8 +5,23 @@
 #declare Beat1_Start = 33.96;
 #declare Beat1_Period = 28.14;
 
+#declare Beat2_Start = 4952;
+#declare Beat2_Period = 28.14;
+
+#declare start_part1_fade = 0;
+#declare end_part1_fade = 800;
+#declare start_break_down_fade = 1800;
+#declare end_break_down_fade = 2400;
+#declare start_part2_fade = 4920;
+#declare end_part2_fade = 5100;
+#declare end_song = 12724;
+
 #macro Beat1()
     mod((clock + Beat1_Start) * 10000, Beat1_Period * 10000) / (Beat1_Period * 10000)
+#end
+
+#macro Beat2()
+    mod((clock + Beat2_Start) * 10000, Beat2_Period * 10000) / (Beat2_Period * 10000)
 #end
 
 #include "colors.inc"
@@ -24,23 +39,21 @@
 global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
 
-#local start_part1_fade = 0;
-#local end_part1_fade = 800;
-#local start_break_down_fade = 1800;
-#local end_break_down_fade = 2400;
-#local start_part2_fade = 4920;
-#local end_part2_fade = 5100;
-#local end_song = 12724;
-
 camera {
     location <0, 0, -10>
     look_at 0
     #switch (clock)
         #range (2500, 5000)
+            translate <0, 0, clock>
             rotate mod(clock/2, 360)*y
         #break
+        #range (start_part2_fade, end_song)
+            translate <0, 0, start_part2_fade - clock>
+            rotate 180
+        #break
+        #else
+            translate <0, 0, clock>
     #end
-    translate <0, 0, clock>
 }
 
 #switch (clock)
@@ -77,6 +90,7 @@ fog {
             distance Interpolate(clock, start_part1_fade, end_part1_fade, 0.01, 100, 1)
         #break
 
+        // Part1
         #range (end_part1_fade, start_break_down_fade)
             distance 100
         #break
@@ -91,10 +105,11 @@ fog {
 
         // Part2 fade-in
         #range (start_part2_fade, end_part2_fade)
-            distance Interpolate(clock, start_part1_fade, end_part2_fade, 0.01, 100, 1)
+            distance Interpolate(clock, start_part2_fade, end_part2_fade, 0.01, 100, 1)
         #break
 
-        #range (end_part2_fade, start_break_down_fade)
+        // Part2
+        #range (end_part2_fade, end_song)
             distance 100
         #break
     #end
