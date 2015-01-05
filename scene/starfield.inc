@@ -16,7 +16,7 @@
         #end
     #break
     #range (start_part2_fade, end_song)
-        #local num_stars = 10000;
+        #local num_stars = 1000;
         #for (i, 0, num_stars, 1)
             sphere {
                 <0, 0>, 1
