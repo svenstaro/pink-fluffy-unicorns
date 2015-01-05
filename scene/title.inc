@@ -1,6 +1,6 @@
 #local title = union {
     text {
-        ttf "timrom.ttf" "Test" 4.5, 0
+        ttf "timrom.ttf" "Test" 5, 0
         texture{ Polished_Chrome
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
@@ -8,7 +8,7 @@
         translate<-0.9, 0, 0>
     }
     text {
-        ttf "timrom.ttf", "WiSe 2014/2015", 9, 0
+        ttf "timrom.ttf", "WiSe 2014/2015", 5, 0
         texture{ Polished_Chrome
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
@@ -20,7 +20,7 @@
 
 #local authors = union {
     text {
-        ttf "timrom.ttf", "Authors: ", 4.5, 0
+        ttf "timrom.ttf", "Authors: ", 5, 0
         texture{ Polished_Chrome
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
@@ -29,7 +29,7 @@
         scale 0.4
     }
     text {
-        ttf "timrom.ttf", "Arne Beer", 4.5, 0
+        ttf "timrom.ttf", "Arne Beer", 5, 0
         texture{ Polished_Chrome
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
@@ -38,7 +38,7 @@
         scale 0.4
     }
     text {
-        ttf "timrom.ttf", "Rafael Epplee", 4.5, 0
+        ttf "timrom.ttf", "Rafael Epplee", 5, 0
         texture{ Polished_Chrome
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
@@ -47,7 +47,7 @@
         scale 0.4
     }
     text {
-        ttf "timrom.ttf", "Sven-Hendrik Haase", 4.5, 0
+        ttf "timrom.ttf", "Sven-Hendrik Haase", 5, 0
         texture{ Polished_Chrome
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
@@ -72,7 +72,7 @@
     #range (1040, 1280)
         #local Fadeout = (1/240)*mod((clock+160), 240);
         object { title
-            translate<0,0,clock-10*Fadeout>
+            translate<0,0,clock-20*Fadeout>
         }
 #end
 
@@ -91,7 +91,7 @@
     #range (1400, 1640)
         #local Fadeout = (1/240)*mod(clock+40, 240);
         object { authors
-            translate<0,0,clock-8*Fadeout>
+            translate<0,0,clock-20*Fadeout>
         }
         #break
 #end
