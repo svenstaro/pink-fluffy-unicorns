@@ -13,7 +13,7 @@
 #declare start_break_down_fade = 1800;
 #declare end_break_down_fade = 2400;
 #declare start_part2_fade = 4920;
-#declare end_part2_fade = 5100;
+#declare end_part2_fade = 4952;
 #declare end_song = 12724;
 
 #macro Beat1()
@@ -34,8 +34,6 @@
 #include "rad_def.inc"
 #include "rand.inc"
 
-#include "scene/title.inc"
-
 global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
 
@@ -43,7 +41,7 @@ camera {
     location <0, 0, -10>
     look_at 0
     #switch (clock)
-        #range (2500, 5000)
+        #range (2500, start_part2_fade)
             translate <0, 0, clock>
             rotate mod(clock/2, 360)*y
         #break
@@ -57,7 +55,7 @@ camera {
 }
 
 #switch (clock)
-    #range (0, start_break_down_fade)
+    #range (start_part1_fade, start_break_down_fade)
         #include "scene/starfield.inc"
     #break
     #range (start_part2_fade, end_song)
@@ -66,14 +64,14 @@ camera {
 #end
 
 #switch (clock)
-    #range (800, 1680)
+    #range (end_part1_fade, start_break_down_fade)
         #include "scene/title.inc"
     #break
 #end
 
 // Break down
 #switch (clock)
-    #range (1800, 5000)
+    #range (start_break_down_fade, start_part2_fade)
         #include "scene/funky-sky.inc"
         #include "scene/ship.inc"
     #break
@@ -105,7 +103,7 @@ fog {
 
         // Part2 fade-in
         #range (start_part2_fade, end_part2_fade)
-            distance Interpolate(clock, start_part2_fade, end_part2_fade, 0.01, 100, 1)
+            distance 0.1
         #break
 
         // Part2
