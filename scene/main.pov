@@ -41,8 +41,7 @@ camera {
     location <0, 0, -10>
     look_at 0
     #switch (clock)
-        #range (2500, start_part2_fade)
-            translate <0, 0, clock>
+        #range (start_break_down_fade, start_part2_fade)
             rotate mod(clock/2, 360)*y
         #break
         #range (start_part2_fade, end_song)

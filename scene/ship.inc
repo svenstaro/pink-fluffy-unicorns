@@ -131,7 +131,11 @@ union {
     scale 0.25
     rotate 30*y
     rotate -10*x
-    translate <0, 0, clock>
+    #switch (clock)
+        #range (start_part1_fade, start_break_down_fade)
+            translate <0, 0, clock>
+        #break
+    #end
 }
 
 
