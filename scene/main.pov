@@ -12,6 +12,8 @@
 #declare end_part1_fade = 800;
 #declare start_break_down_fade = 1800;
 #declare end_break_down_fade = 2400;
+#declare start_focus_break_down = 3300;
+#declare end_focus_break_down = 4000;
 #declare start_part2_fade = 4920;
 #declare end_part2_fade = 4951;
 #declare end_song = 12724;
@@ -34,24 +36,10 @@
 #include "rad_def.inc"
 #include "rand.inc"
 
+#include "scene/camera.inc"
+
 global_settings { assumed_gamma 2.2 }
 global_settings { ambient_light rgb<1, 1, 1> }
-
-camera {
-    location <0, 0, -10>
-    look_at 0
-    #switch (clock)
-        #range (start_break_down_fade, start_part2_fade)
-            rotate mod(clock/2, 360)*y
-        #break
-        #range (start_part2_fade, end_song)
-            translate <0, 0, start_part2_fade - clock>
-            rotate 180
-        #break
-        #else
-            translate <0, 0, clock>
-    #end
-}
 
 #switch (clock)
     #range (start_part1_fade, start_break_down_fade)
