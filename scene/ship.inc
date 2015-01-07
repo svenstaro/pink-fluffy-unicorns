@@ -135,12 +135,4 @@ union {
 
     translate -(core_length/2)*x
     scale 0.3
-
-    #switch (clock)
-        #range (start_part1_fade, start_break_down_fade)
-            translate <0, 0, clock>
-        #break
-    #end
 }
-
-
