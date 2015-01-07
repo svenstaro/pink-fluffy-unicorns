@@ -5,7 +5,7 @@
 #declare Beat1_Start = 33.96;
 #declare Beat1_Period = 28.14;
 
-#declare Beat2_Start = 4951;
+#declare Beat2_Start = 82.51;
 #declare Beat2_Period = 28.14;
 
 #declare start_part1_fade = 0;

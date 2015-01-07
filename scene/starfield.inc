@@ -27,7 +27,7 @@
                 no_shadow
                 rotate <0, 0, 10*clock>
                 scale Beat2()+5
-                translate VRand_In_Box(<50, 50, start_part2_fade+200>, <-50, -50, -5000>, RandomSeed)
+                translate VRand_In_Box(<100, 100, start_part2_fade+200>, <-100, -100, -5000>, RandomSeed)
             }
         #end
     #break
