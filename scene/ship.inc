@@ -128,9 +128,14 @@ union {
     pigment {
         color rgb<0.1, 0.1, 0.14>
     }
-    scale 0.25
-    rotate 30*y
-    rotate -10*x
+
+    finish {
+        ambient rgb 0.7
+    }
+
+    translate -(core_length/2)*x
+    scale 0.3
+
     #switch (clock)
         #range (start_part1_fade, start_break_down_fade)
             translate <0, 0, clock>
