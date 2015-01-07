@@ -65,7 +65,7 @@ global_settings { ambient_light rgb<1, 1, 1> }
 #end
 
 light_source {
-    <0, 0, -5*clock>, color <2, 2, 2>
+    <5, 1, 0>, color <5, 5, 5>
 }
 
 fog {
