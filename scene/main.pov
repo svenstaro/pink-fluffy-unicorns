@@ -71,10 +71,6 @@ global_settings { ambient_light rgb<1, 1, 1> }
     #break
 #end
 
-light_source {
-    <5, 1, 0>, color <5, 5, 5>
-}
-
 fog {
     #switch (clock)
         // Part1 fade-in

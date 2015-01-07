@@ -18,8 +18,9 @@ camera {
             rotate -91*y
         #break
         #range (end_focus_break_down, start_part2_fade)
-            translate 5*z
-            rotate -90*y
+            translate 6.3*z
+            rotate 35*x
+            rotate 92*y
         #break
         #range (start_part2_fade, end_song)
             translate <0, 0, start_part2_fade - clock>
