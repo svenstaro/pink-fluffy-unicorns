@@ -5,7 +5,7 @@
 #declare Beat1_Start = 33.96;
 #declare Beat1_Period = 28.14;
 
-#declare Beat2_Start = 4950;
+#declare Beat2_Start = 4951;
 #declare Beat2_Period = 28.14;
 
 #declare start_part1_fade = 0;
@@ -13,7 +13,7 @@
 #declare start_break_down_fade = 1800;
 #declare end_break_down_fade = 2400;
 #declare start_part2_fade = 4920;
-#declare end_part2_fade = 4950;
+#declare end_part2_fade = 4951;
 #declare end_song = 12724;
 
 #macro Beat1()
