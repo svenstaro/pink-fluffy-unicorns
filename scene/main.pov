@@ -5,8 +5,8 @@
 #declare Beat1_Start = 33.96;  // seconds
 #declare Beat1_Period = 28.14; // frames
 
-#declare BGSynths_Start = 40.43  // seconds
-#declare BGSynths_Period = 21.18 // frames
+#declare BGSynths_Start = 40.43;  // seconds
+#declare BGSynths_Period = 21.18; // frames
 
 #declare Beat2_Start = 82.54;  // seconds
 #declare Beat2_Period = 28.14; // frames
