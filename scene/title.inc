@@ -1,3 +1,7 @@
+light_source {
+    <0, 0, -5+clock>, color <5, 5, 5>
+}
+
 #local title = union {
     text {
         ttf "timrom.ttf" "Test" 5, 0

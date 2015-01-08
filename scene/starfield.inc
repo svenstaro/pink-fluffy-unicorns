@@ -7,7 +7,7 @@
                 pigment {
                     color White
                 }
-                finish { ambient 0.7 }
+                finish { ambient 1 }
                 no_shadow
                 rotate <0, 0, 10*clock>
                 scale Beat1()+0.2
