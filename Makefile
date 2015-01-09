@@ -2,8 +2,8 @@
 
 MODE ?= superfast
 POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW
-START_FRAME = 2800
-END_FRAME = 3000
+START_FRAME = 1
+END_FRAME = 6000
 OUTDIR = output
 
 # Don't change this

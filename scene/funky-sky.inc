@@ -22,7 +22,7 @@
    sphere { 0, 2 pigment { color rgbf<1, 1, 1,1> } finish { ambient 0.0 diffuse 0.0 }
       interior { media { intervals 10 samples 1, 5 confidence 0.9999 variance 1/1000 emission fEmission/fSize //0.008
          density { dents scale 0.2 
-            turbulence 0.5+0.8*sin(Beat1()*3.14159265359)
+            turbulence 0.5+0.8*sin(beat*3.14159265359)
             octaves RRand(2,40,rShapeSeed)
             frequency RRand(1,2,rShapeSeed)
             lambda RRand(2.1,4.5,rShapeSeed)
@@ -58,11 +58,19 @@
 
 
 #switch (clock)
-    #range (0, 2460)
-        object { Nebula(1, NEBULA_COLORS, 0, seed(93265), seed(1825), Beat1()) rotate V_Rotation translate <0, 0, 120> }
+    #range (start_break_down_fade, BGSynths_Start)
+        object {
+            Nebula(1, NEBULA_COLORS, 0, seed(93265), seed(1825), Beat1())
+            rotate V_Rotation
+            translate <0, 0, 120>
+        }
         #break
-    #range (2460, 4920)
-        object { Nebula(1, NEBULA_COLORS, 0, seed(93265), seed(1825), Beat2()) rotate V_Rotation translate <0, 0, 120> }
+    #range (BGSynths_Start, start_part2_fade)
+        object {
+            Nebula(1, NEBULA_COLORS, 0, seed(93265), seed(1825), BGSynths())
+            rotate V_Rotation
+            translate <0, 0, 120>
+        }
         #break
 #end
 
@@ -80,9 +88,9 @@ sphere { 0, 1.5 pigment { color rgbf<1, 1, 1,1> } finish { ambient 0.0 diffuse 0
             density {
                 spherical
                 ramp_wave
-        translate 1.0*y  // replace 1.0 = t   by time for animation
-        warp { turbulence 2.5 }
-        translate -1.0*y // replace -1.0 = -t  by time for animation
+                translate 1.0*y  // replace 1.0 = t   by time for animation
+                warp { turbulence 2.5 }
+                translate -1.0*y // replace -1.0 = -t  by time for animation
                 color_map {
                     [0.0 color rgb <0, 0, 0> * 0.5]
                     [0.1 color rgb <0, 1, 0> * 0.5]

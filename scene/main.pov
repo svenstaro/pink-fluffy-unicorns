@@ -5,6 +5,9 @@
 #declare Beat1_Start = 33.96;  // seconds
 #declare Beat1_Period = 28.14; // frames
 
+#declare BGSynths_Start = 40.43;  // seconds
+#declare BGSynths_Period = 21.18; // frames
+
 #declare Beat2_Start = 82.54;  // seconds
 #declare Beat2_Period = 28.14; // frames
 
@@ -20,6 +23,10 @@
 
 #macro Beat1()
     mod((clock + Beat1_Start) * 10000, Beat1_Period * 10000) / (Beat1_Period * 10000)
+#end
+
+#macro BGSynths()
+    mod((clock + BGSynths_Start) * 10000, BGSynths_Period * 10000) / (BGSynths_Period * 10000)
 #end
 
 #macro Beat2()
