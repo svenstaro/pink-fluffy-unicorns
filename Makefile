@@ -1,6 +1,6 @@
 .PHONY: default clean render movie watch play
 
-MODE ?= superfast
+MODE ?= fast
 POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW
 START_FRAME = 1
 END_FRAME = 6000
