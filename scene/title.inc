@@ -1,15 +1,15 @@
 light_source {
-    <0, 0, -5+clock>, color <5, 5, 5>
+    <0, 0, clock-8>, color <5, 5, 5>
 }
 
 #local title = union {
     text {
-        ttf "timrom.ttf" "Test" 5, 0
+        ttf "timrom.ttf" "Space Rave" 5, 0
         texture{ Polished_Chrome
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
         }
-        translate<-0.9, 0, 0>
+        translate<-2.4, 0, 0>
     }
     text {
         ttf "timrom.ttf", "WiSe 2014/2015", 5, 0
