@@ -2,13 +2,13 @@
 
 #declare RandomSeed = seed(1337);
 
-#declare Beat1_Start = 33.96;  // seconds
-#declare Beat1_Period = 28.14; // frames
+#declare Beat1_Start = 33.96;
+#declare Beat1_Period = 28.14;
 
-#declare BGSynths_Start = 40.43;  // seconds
+#declare BGSynths_Start = 2426;
 #declare BGSynths_Period = 21.18; // frames
 
-#declare Beat2_Start = 82.54;  // seconds
+#declare Beat2_Start = 4952;
 #declare Beat2_Period = 28.14; // frames
 
 #declare start_part1_fade = 0;
