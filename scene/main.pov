@@ -2,13 +2,13 @@
 
 #declare RandomSeed = seed(1337);
 
-#declare Beat1_Start = 33.96;  // seconds
-#declare Beat1_Period = 28.14; // frames
+#declare Beat1_Start = 33.96;
+#declare Beat1_Period = 28.14;
 
-#declare BGSynths_Start = 40.43;  // seconds
+#declare BGSynths_Start = 2426;
 #declare BGSynths_Period = 21.18; // frames
 
-#declare Beat2_Start = 82.54;  // seconds
+#declare Beat2_Start = 4952;
 #declare Beat2_Period = 28.14; // frames
 
 #declare start_part1_fade = 0;
@@ -16,7 +16,7 @@
 #declare start_break_down_fade = 1800;
 #declare end_break_down_fade = 2400;
 #declare start_focus_break_down = 3300;
-#declare end_focus_break_down = 4000;
+#declare end_focus_break_down = 3800;
 #declare start_part2_fade = 4920;
 #declare end_part2_fade = 4951;
 #declare end_song = 12724;
