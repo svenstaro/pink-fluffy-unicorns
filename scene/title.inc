@@ -9,7 +9,7 @@ light_source {
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
         }
-        translate<-2.4, 0, 0>
+        translate<-2.4, 0, -6>
     }
     text {
         ttf "timrom.ttf", "WiSe 2014/2015", 5, 0
@@ -18,7 +18,7 @@ light_source {
             finish{specular 1 reflection 0.55}
         }
         scale 0.5
-        translate<-1.8, -1, 0>
+        translate<-1.8, -1, -6>
     }
 }
 
@@ -29,7 +29,7 @@ light_source {
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
         }
-        translate<-5, 1, 0>
+        translate<-5, 1, -14>
         scale 0.4
     }
     text {
@@ -38,7 +38,7 @@ light_source {
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
         }
-        translate<-2, 0, 0>
+        translate<-2, 0, -14>
         scale 0.4
     }
     text {
@@ -47,7 +47,7 @@ light_source {
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
         }
-        translate<-2.7, -1, 0>
+        translate<-2.7, -1, -14>
         scale 0.4
     }
     text {
@@ -56,7 +56,7 @@ light_source {
             normal { bumps 0.5 scale 0.005}
             finish{specular 1 reflection 0.55}
         }
-        translate<-4, -2, 0>
+        translate<-4, -2, -14>
         scale 0.4
     }
 }
