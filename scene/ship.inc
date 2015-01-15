@@ -89,7 +89,7 @@
     translate <core_length*2/3, 0, core_width/4>
 }
 
-union {
+#local ship = union {
     object { base }
     object { head }
     object { arm }
@@ -177,3 +177,15 @@ union {
     translate -(core_length/2)*x
     scale 0.3
 }
+
+#switch (clock)
+    #range (start_break_down_fade, start_part2_fade)
+        object { ship }
+    #break
+    #range (start_part2_fade, end_song)
+        object { ship
+            rotate 90*y
+            translate <0, 0, start_part2_fade - clock>
+        }
+    #break
+#end

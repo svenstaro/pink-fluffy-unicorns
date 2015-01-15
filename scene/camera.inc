@@ -9,11 +9,13 @@ camera {
         #break
         #range (end_break_down_fade, start_focus_break_down)
             // Turn around ship
-            rotate <10, (clock/4)-end_break_down_fade, 0>
+            translate <0, 2, 5>
+            rotate <5, (clock/4)-end_break_down_fade, 0>
         #break
         #range (start_focus_break_down, end_focus_break_down)
+            // Zoom in
             #local diff = end_focus_break_down-start_focus_break_down;
-            translate (-20+(clock-start_focus_break_down)*26/diff)*z
+            translate <0, 2, (-20+(clock-start_focus_break_down)*26/diff)>
             rotate 30*x
             rotate 90*y
         #break

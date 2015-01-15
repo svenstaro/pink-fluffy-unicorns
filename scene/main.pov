@@ -63,10 +63,15 @@ global_settings { ambient_light rgb<1, 1, 1> }
     #break
 #end
 
-// Break down
+// Funky sky include
 #switch (clock)
     #range (start_break_down_fade, start_part2_fade)
         #include "scene/funky-sky.inc"
+    #break
+#end
+
+#switch (clock)
+    #range (start_break_down_fade, end_song)
         #include "scene/ship.inc"
     #break
 #end

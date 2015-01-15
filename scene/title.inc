@@ -1,5 +1,5 @@
 light_source {
-    <0, 0, clock-8>, color <5, 5, 5>
+    <0, 0, clock-10>, color <5, 5, 5>
 }
 
 #local title = union {
