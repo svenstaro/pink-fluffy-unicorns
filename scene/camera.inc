@@ -4,12 +4,9 @@ camera {
         #range (0, start_break_down_fade)
             translate clock*z
         #break
-        #range (start_break_down_fade, end_break_down_fade)
-            rotate 10*x
-        #break
-        #range (end_break_down_fade, start_focus_break_down)
+        #range (start_break_down_fade, start_focus_break_down)
             // Turn around ship
-            rotate <10, (clock/4)-end_break_down_fade, 0>
+            rotate <20, (clock/4)-end_break_down_fade, 0>
         #break
         #range (start_focus_break_down, end_focus_break_down)
             #local diff = end_focus_break_down-start_focus_break_down;

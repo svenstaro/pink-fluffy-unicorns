@@ -1,3 +1,5 @@
+#include "math.inc"
+
 #local core_width = 1.5;
 #local core_length = 8;
 #local core_height = 2;
@@ -10,7 +12,7 @@
         <0, 1.5>,
         <1.8, 1.5>,
         <2, 0>,
-        <0, 0>   
+        <0, 0>
         translate 0.2*x
     }
     box {
@@ -39,7 +41,7 @@
         <0, 0, 0>
         <head_length, 1, core_width/2>
         translate <core_length, -0.2, 0>
-    } 
+    }
     prism {
         0, core_width/2, 4
         <0, 0>,
@@ -55,7 +57,7 @@
     #local hand_size = core_length/10;
     #local half = prism {
         0, hand_size*2/3, 6
-        <0, 0>, 
+        <0, 0>,
         <0, hand_size/4>,
         <hand_size/2, hand_size>
         <hand_size, hand_size*3/4>
@@ -95,7 +97,7 @@ union {
     object { arm }
 
     // Mirror base and head
-    object { 
+    object {
         base
         scale -1*z
     }
@@ -108,6 +110,33 @@ union {
         scale -1*z
     }
 
+    #local start_melody = 2700;
+    #local end_melody = 4438;
+    #local relative_clock = clip(clock - start_melody, 0, end_melody);
+
+    // Povray's mod doesn't return positive numbers for negative inputs, duh
+    #macro fixed_mod(a, b)
+        mod((mod(a, b) + b), b)
+    #end
+
+    #macro engine_alpha(duration, period, ox)
+        clip(fixed_mod(relative_clock-duration-ox, period)-period+duration, 0, 0.5)
+    #end
+
+    #local period1 = 449;
+    #local periodRest = 225;
+
+    #local duration1 = 13.8;
+    #local durationRest = 21;
+
+
+    //#warning concat("##### RELATIVE CLOCK: ", Str(relative_clock))
+    //#warning concat("##### STUFF: ", Str(fixed_mod(relative_clock-duration1, period)))
+    //#warning concat("##### ENGINE ALPHA: ", Str(engine_alpha))
+
+    // engines from left to right
+
+    // cyan
     object {
         engine
         scale 1.5*y
@@ -115,9 +144,12 @@ union {
         pigment {
             rgb <0, 0.95, 0.95>
         }
-        finish { ambient 0.5 }
+        finish { ambient 0.5 +
+            engine_alpha(duration1, period1, periodRest-duration1) +
+            engine_alpha(durationRest, periodRest, durationRest*3) }
     }
 
+    // magenta
     object {
         engine
         scale 1.6*x
@@ -125,9 +157,12 @@ union {
         pigment {
             rgb <0.95, 0, 0.3>
         }
-        finish { ambient 0.5 }
+        finish { ambient 0.5 +
+            engine_alpha(durationRest, periodRest, 0) +
+            engine_alpha(durationRest, periodRest, durationRest*4)}
     }
 
+    // green
     object {
         engine
         scale 1.6*x
@@ -135,9 +170,10 @@ union {
         pigment {
             rgb <0.45, 0.95, 0>
         }
-        finish { ambient 0.5 }
+        finish { ambient 0.5 + engine_alpha(durationRest, periodRest, durationRest)}
     }
 
+    // orange
     object {
         engine
         scale 1.5*y
@@ -145,21 +181,7 @@ union {
         pigment {
             rgb <1, 0.455, 0>
         }
-        finish { ambient 0.6 }
-    }
-
-    object {
-        engine
-        scale 1.6*x
-        //scale -1*z
-        translate <1, 0.2, 1+core_width/2>
-    }
-
-    object {
-        engine
-        scale 1.5*y
-        //scale -1*z
-        translate <1, 0.1, 2+core_width/2>
+        finish { ambient 0.6 + engine_alpha(durationRest, periodRest, durationRest*2)}
     }
 
     light_source {
