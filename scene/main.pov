@@ -2,13 +2,13 @@
 
 #declare RandomSeed = seed(1337);
 
-#declare Beat1_Start = 33.96;  // seconds
-#declare Beat1_Period = 28.14; // frames
+#declare Beat1_Start = 33.96;
+#declare Beat1_Period = 28.14;
 
-#declare BGSynths_Start = 40.43;  // seconds
+#declare BGSynths_Start = 2426;
 #declare BGSynths_Period = 21.18; // frames
 
-#declare Beat2_Start = 82.54;  // seconds
+#declare Beat2_Start = 4952;
 #declare Beat2_Period = 28.14; // frames
 
 #declare start_part1_fade = 0;
@@ -63,10 +63,15 @@ global_settings { ambient_light rgb<1, 1, 1> }
     #break
 #end
 
-// Break down
+// Funky sky include
 #switch (clock)
     #range (start_break_down_fade, start_part2_fade)
         #include "scene/funky-sky.inc"
+    #break
+#end
+
+#switch (clock)
+    #range (start_break_down_fade, end_song)
         #include "scene/ship.inc"
     #break
 #end
