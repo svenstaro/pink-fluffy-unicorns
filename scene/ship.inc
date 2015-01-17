@@ -112,7 +112,7 @@
 
     #local start_melody = 2700;
     #local end_melody = 4438;
-    #local relative_clock = clip(clock - start_melody, 0, end_melody);
+    #local relative_clock = clip(clock - start_melody, 0, end_melody - start_melody);
 
     // Povray's mod doesn't return positive numbers for negative inputs, duh
     #macro fixed_mod(a, b)
