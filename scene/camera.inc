@@ -6,8 +6,8 @@ camera {
         #break
         #range (start_break_down_fade, start_focus_break_down)
             // Turn around ship
-            rotate <20, (clock/4)-end_break_down_fade-40, 0>
             translate <0, 0, 4>
+            rotate <20, (clock/4)-end_break_down_fade-40, 0>
         #break
         #range (start_focus_break_down, end_focus_break_down)
             // Zoom in
