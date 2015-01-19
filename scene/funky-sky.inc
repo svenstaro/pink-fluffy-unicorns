@@ -59,7 +59,7 @@
 #switch (clock)
     #range (start_break_down_fade, BGSynths_Start)
         object {
-            #local interpol = clock-start_break_down_fade/(BGSynths_Start-start_break_down_fade);
+            #local interpol = (clock-start_break_down_fade)/(BGSynths_Start-start_break_down_fade);
             Nebula(1, NEBULA_COLORS, 0, seed(93265), seed(1825), interpol)
             rotate V_Rotation
             translate <0, 0, 120>

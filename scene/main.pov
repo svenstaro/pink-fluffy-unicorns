@@ -29,6 +29,10 @@
     mod((clock + BGSynths_Start) * 10000, BGSynths_Period * 10000) / (BGSynths_Period * 10000)
 #end
 
+#macro BGSynths_2()
+    mod((clock + BGSynths_Start) * 10000, BGSynths_Period * 2 * 10000) / (BGSynths_Period * 2 * 10000)
+#end
+
 #macro Beat2()
     mod((clock + Beat2_Start) * 10000, Beat2_Period * 10000) / (Beat2_Period * 10000)
 #end
