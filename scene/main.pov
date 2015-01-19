@@ -11,6 +11,9 @@
 #declare Beat2_Start = 4952;
 #declare Beat2_Period = 28.14; // frames
 
+#declare Fade_out_Start = 9462;
+#declare Fade_out_End = 9840;
+
 #declare start_part1_fade = 0;
 #declare end_part1_fade = 800;
 #declare start_break_down_fade = 1800;
