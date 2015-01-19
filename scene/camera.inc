@@ -12,7 +12,7 @@ camera {
         #range (start_focus_break_down, end_focus_break_down)
             // Zoom in
             #local diff = end_focus_break_down-start_focus_break_down;
-            translate <0, 2, (-20+(clock-start_focus_break_down)*26/diff)>
+            translate <0, 0, (-20+(clock-start_focus_break_down)*26/diff)>
             rotate 30*x
             rotate 90*y
         #break
