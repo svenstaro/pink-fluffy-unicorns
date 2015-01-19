@@ -53,159 +53,173 @@
     }
 }
 
-#local hand = union {
-    #local hand_size = core_length/10;
-    #local half = prism {
-        0, hand_size*2/3, 6
-        <0, 0>,
-        <0, hand_size/4>,
-        <hand_size/2, hand_size>
-        <hand_size, hand_size*3/4>
-        <hand_size, hand_size/2>
-        <hand_size/2, hand_size*3/4>
-    }
-    object { half }
-    object {
-        half
-        scale -1*z
-    }
-}
-
-#local arm = union {
-    box {
-        <0, 0, 0>
-        <core_length/15, core_length/15, core_width>
-    }
-    box {
-        <-core_width*0.2, 0, core_width>
-        <core_width, core_length/15, core_width+core_length/12>
-        rotate 10*y
-    }
-    object {
-        hand
-        translate <core_width, 0, core_width+core_length/24>
-        rotate 10*y
-    }
-    rotate -7*y
-    rotate 40*x
-    translate <core_length*2/3, 0, core_width/4>
-}
-
-#local ship = union {
-    object { base }
-    object { head }
-    object { arm }
-
-    // Mirror base and head
-    object {
-        base
-        scale -1*z
-    }
-    object {
-        head
-        scale -1*z
-    }
-    object {
-        arm
-        scale -1*z
-    }
-
-    #local start_melody = 2700;
-    #local end_melody = 4438;
-    #local relative_clock = clip(clock - start_melody, 0, end_melody - start_melody);
-
-    // Povray's mod doesn't return positive numbers for negative inputs, duh
-    #macro fixed_mod(a, b)
-        mod((mod(a, b) + b), b)
-    #end
-
-    #macro engine_alpha(duration, period, ox)
-        clip(fixed_mod(relative_clock-duration-ox, period)-period+duration, 0, 0.8)
-    #end
-
-    #local period1 = 449;
-    #local periodRest = 225;
-
-    #local duration1 = 13.8;
-    #local durationRest = 21;
-
-
-    //#warning concat("##### RELATIVE CLOCK: ", Str(relative_clock))
-    //#warning concat("##### STUFF: ", Str(fixed_mod(relative_clock-duration1, period)))
-    //#warning concat("##### ENGINE ALPHA: ", Str(engine_alpha))
-
-    // engines from left to right
-
-    // cyan
-    object {
-        engine
-        scale 1.5*y
-        translate <1, 0.1, 2+core_width/2>
-        pigment {
-            rgb <0, 0.95, 0.95>
+#macro init_hand(beat)
+    #declare handUnion = union {
+        #local hand_size = core_length/10;
+        #local half = prism {
+            0, hand_size*2/3, 6
+            <0, 0>,
+            <0, hand_size/4>,
+            <hand_size/2, hand_size>
+            <hand_size, hand_size*3/4>
+            <hand_size, hand_size/2>
+            <hand_size/2, hand_size*3/4>
         }
-        finish { ambient 0.2 +
-            engine_alpha(duration1, period1, periodRest-duration1) +
-            engine_alpha(durationRest, periodRest, durationRest*3) }
-    }
-
-    // magenta
-    object {
-        engine
-        scale 1.6*x
-        translate <1, 0.2, 1+core_width/2>
-        pigment {
-            rgb <0.95, 0, 0.3>
+        object { 
+            half
+            rotate (beat*20)*y
         }
-        finish { ambient 0.2 +
-            engine_alpha(durationRest, periodRest, 0) +
-            engine_alpha(durationRest, periodRest, durationRest*4)}
-    }
-
-    // green
-    object {
-        engine
-        scale 1.6*x
-        translate <1, 0.2, -(core_width/2)>
-        pigment {
-            rgb <0.45, 0.95, 0>
+        object {
+            half
+            scale -1*z
+            rotate (-beat*20)*y
         }
-        finish { ambient 0.2 + engine_alpha(durationRest, periodRest, durationRest)}
     }
+#end
 
-    // orange
-    object {
-        engine
-        scale 1.5*y
-        translate <1, 0.1, -(1+core_width/2)>
-        pigment {
-            rgb <1, 0.455, 0>
+#macro init_arm(beat)
+    init_hand(beat)
+    #declare armUnion = union {
+        box {
+            <0, 0, 0>
+            <core_length/15, core_length/15, core_width>
         }
-        finish { ambient 0.2 + engine_alpha(durationRest, periodRest, durationRest*2)}
+        box {
+            <-core_width*0.2, 0, core_width>
+            <core_width, core_length/15, core_width+core_length/12>
+            rotate 10*y
+        }
+        object {
+            handUnion
+            translate <core_width, 0, core_width+core_length/24>
+            rotate 10*y
+        }
+        rotate -7*y
+        rotate 40*x
+        translate <core_length*2/3, 0, core_width/4>
     }
+#end
 
-    light_source {
-        <core_length+head_length+2, core_height+2, 0>, color <5, 5, 5>
+#macro init_ship(beat)
+    init_arm(beat)
+    #declare shipunion = union {
+        object { base }
+        object { head }
+        object { armUnion }
+
+        // Mirror base and head
+        object {
+            base
+            scale -1*z
+        }
+        object {
+            head
+            scale -1*z
+        }
+        object {
+            armUnion
+            scale -1*z
+        }
+
+        #local start_melody = 2700;
+        #local end_melody = 4438;
+        #local relative_clock = clip(clock - start_melody, 0, end_melody - start_melody);
+
+        // Povray's mod doesn't return positive numbers for negative inputs, duh
+        #macro fixed_mod(a, b)
+            mod((mod(a, b) + b), b)
+        #end
+
+        #macro engine_alpha(duration, period, ox)
+            clip(fixed_mod(relative_clock-duration-ox, period)-period+duration, 0, 0.8)
+        #end
+
+        #local period1 = 449;
+        #local periodRest = 225;
+
+        #local duration1 = 13.8;
+        #local durationRest = 21;
+
+
+        //#warning concat("##### RELATIVE CLOCK: ", Str(relative_clock))
+        //#warning concat("##### STUFF: ", Str(fixed_mod(relative_clock-duration1, period)))
+        //#warning concat("##### ENGINE ALPHA: ", Str(engine_alpha))
+
+        // engines from left to right
+
+        // cyan
+        object {
+            engine
+            scale 1.5*y
+            translate <1, 0.1, 2+core_width/2>
+            pigment {
+                rgb <0, 0.95, 0.95>
+            }
+            finish { ambient 0.2 +
+                engine_alpha(duration1, period1, periodRest-duration1) +
+                engine_alpha(durationRest, periodRest, durationRest*3) }
+        }
+
+        // magenta
+        object {
+            engine
+            scale 1.6*x
+            translate <1, 0.2, 1+core_width/2>
+            pigment {
+                rgb <0.95, 0, 0.3>
+            }
+            finish { ambient 0.2 +
+                engine_alpha(durationRest, periodRest, 0) +
+                engine_alpha(durationRest, periodRest, durationRest*4)}
+        }
+
+        // green
+        object {
+            engine
+            scale 1.6*x
+            translate <1, 0.2, -(core_width/2)>
+            pigment {
+                rgb <0.45, 0.95, 0>
+            }
+            finish { ambient 0.2 + engine_alpha(durationRest, periodRest, durationRest)}
+        }
+
+        // orange
+        object {
+            engine
+            scale 1.5*y
+            translate <1, 0.1, -(1+core_width/2)>
+            pigment {
+                rgb <1, 0.455, 0>
+            }
+            finish { ambient 0.2 + engine_alpha(durationRest, periodRest, durationRest*2)}
+        }
+
+        light_source {
+            <core_length+head_length+2, core_height+2, 0>, color <5, 5, 5>
+        }
+
+        pigment {
+            color rgb<0.1, 0.1, 0.14>
+        }
+
+        finish {
+            ambient rgb 1
+        }
+
+        translate -(core_length/2)*x
+        scale 0.3
     }
-
-    pigment {
-        color rgb<0.1, 0.1, 0.14>
-    }
-
-    finish {
-        ambient rgb 1
-    }
-
-    translate -(core_length/2)*x
-    scale 0.3
-}
+#end
 
 #switch (clock)
     #range (start_break_down_fade, start_part2_fade)
-        object { ship }
+        init_ship(0) 
+        object { shipunion }
     #break
     #range (start_part2_fade, end_song)
-        object { ship
+        init_ship((1-Beat2()))
+        object { shipunion
             rotate 90*y
             translate <0, 0, start_part2_fade - clock>
         }
