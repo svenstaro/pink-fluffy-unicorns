@@ -120,7 +120,7 @@
     #end
 
     #macro engine_alpha(duration, period, ox)
-        clip(fixed_mod(relative_clock-duration-ox, period)-period+duration, 0, 0.5)
+        clip(fixed_mod(relative_clock-duration-ox, period)-period+duration, 0, 0.8)
     #end
 
     #local period1 = 449;
@@ -144,7 +144,7 @@
         pigment {
             rgb <0, 0.95, 0.95>
         }
-        finish { ambient 0.5 +
+        finish { ambient 0.2 +
             engine_alpha(duration1, period1, periodRest-duration1) +
             engine_alpha(durationRest, periodRest, durationRest*3) }
     }
@@ -157,7 +157,7 @@
         pigment {
             rgb <0.95, 0, 0.3>
         }
-        finish { ambient 0.5 +
+        finish { ambient 0.2 +
             engine_alpha(durationRest, periodRest, 0) +
             engine_alpha(durationRest, periodRest, durationRest*4)}
     }
@@ -170,7 +170,7 @@
         pigment {
             rgb <0.45, 0.95, 0>
         }
-        finish { ambient 0.5 + engine_alpha(durationRest, periodRest, durationRest)}
+        finish { ambient 0.2 + engine_alpha(durationRest, periodRest, durationRest)}
     }
 
     // orange
@@ -181,7 +181,7 @@
         pigment {
             rgb <1, 0.455, 0>
         }
-        finish { ambient 0.6 + engine_alpha(durationRest, periodRest, durationRest*2)}
+        finish { ambient 0.2 + engine_alpha(durationRest, periodRest, durationRest*2)}
     }
 
     light_source {
