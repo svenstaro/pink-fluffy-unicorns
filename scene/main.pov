@@ -11,9 +11,6 @@
 #declare Beat2_Start = 4952;
 #declare Beat2_Period = 28.14; // frames
 
-#declare Fade_out_Start = 9462;
-#declare Fade_out_End = 9840;
-
 #declare start_part1_fade = 0;
 #declare end_part1_fade = 800;
 #declare start_break_down_fade = 1800;
@@ -23,6 +20,8 @@
 #declare start_part2_fade = 4920;
 #declare end_part2_fade = 4951;
 #declare end_song = 12724;
+#declare fade_out_start = 9462;
+#declare fade_out_end = 9840;
 
 #macro Beat1()
     mod((clock + Beat1_Start) * 10000, Beat1_Period * 10000) / (Beat1_Period * 10000)
@@ -111,6 +110,11 @@ fog {
         // Part2
         #range (end_part2_fade, end_song)
             distance 100
+        #break
+
+        // Fade-out
+        #range (fade_out_start, fade_out_end)
+            distance Interpolate(clock, fade_out_start, fade_out_end, 100, 0.01, 1)
         #break
     #end
 }
