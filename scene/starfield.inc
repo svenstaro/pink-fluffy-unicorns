@@ -23,10 +23,10 @@
                 pigment {
                     color rgb<rand(RandomSeed), rand(RandomSeed), rand(RandomSeed)>
                 }
-                finish { ambient Beat2()*10 }
+                finish { ambient 1+Beat2()*8 }
                 no_shadow
                 rotate <0, 0, 10*clock>
-                scale Beat2()*3+5
+                scale Beat2()*2+6
                 translate VRand_In_Box(<100, 100, start_part2_fade+200>, <-100, -100, -5000>, RandomSeed)
             }
         #end

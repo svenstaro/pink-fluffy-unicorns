@@ -65,7 +65,7 @@
             <hand_size, hand_size/2>
             <hand_size/2, hand_size*3/4>
         }
-        object { 
+        object {
             half
             rotate (beat*20)*y
         }
@@ -122,8 +122,20 @@
         }
 
         #local start_melody = 2700;
+        #local start_melody2 = 5853;
         #local end_melody = 4438;
-        #local relative_clock = clip(clock - start_melody, 0, end_melody - start_melody);
+
+        #switch (clock)
+            #range (start_melody, end_melody)
+                #local relative_clock = clip(clock - start_melody, 0, end_melody - start_melody);
+            #break
+            #range (start_melody2, 13000)
+                #local relative_clock = clip(clock - start_melody2, 0, 13000);
+            #break
+            #else
+                #local relative_clock = 0;
+            #break
+        #end
 
         // Povray's mod doesn't return positive numbers for negative inputs, duh
         #macro fixed_mod(a, b)
@@ -214,7 +226,7 @@
 
 #switch (clock)
     #range (start_break_down_fade, start_part2_fade)
-        init_ship(0) 
+        init_ship(0)
         object { shipunion }
     #break
     #range (start_part2_fade, end_song)
