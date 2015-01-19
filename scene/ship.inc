@@ -233,7 +233,9 @@
             7816, < 1,1, start_part2_fade - 7816>,
             8177, < 2,2, start_part2_fade - 8176>,//end point
             8640, < 0,1, start_part2_fade - 8638>//control point
-            9000, < 0,0, start_part2_fade - 9000>//control point
+            9000, < -1,-1, start_part2_fade - 8998>//control point
+            9400, < 0,0, start_part2_fade - 9400>//control point
+            9840, < 0,0, start_part2_fade - 9842>//control point
 
         }
         init_ship((1-Beat2()))
