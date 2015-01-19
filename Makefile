@@ -3,7 +3,7 @@
 MODE ?= fast
 POVSETTINGS = +KFI1 +KFF12724 +KF12724.0 -GR +GF -GD -GS -GW
 START_FRAME = 1
-END_FRAME = 6000
+END_FRAME = 9840
 OUTDIR = output
 
 # Don't change this
@@ -22,7 +22,7 @@ endif
 default: $(FRAME_TARGETS) movie
 
 movie:
-	ffmpeg -i media/strobe.ogg -framerate 60 -i $(OUTDIR)/$(PREFIX)%05d.png -y -r 60 -vcodec libx264 -acodec copy -threads 0 $(OUTDIR)/scene.mkv
+	ffmpeg -i media/strobe.ogg -framerate 60 -i $(OUTDIR)/$(PREFIX)%05d.png -y -r 60 -vcodec libx264 -preset veryslow -crf 22 -acodec copy -threads 0 $(OUTDIR)/scene.mkv
 
 $(OUTDIR)/$(PREFIX)%.png: scene/*
 	mkdir -p $(OUTDIR)
