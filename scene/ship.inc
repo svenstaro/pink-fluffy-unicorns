@@ -220,26 +220,27 @@
     #range (start_part2_fade, end_song)
         #declare ShipSpline = spline {
             natural_spline
-            -0.2, <-2,1,-2>,//control point
+            -2, <-2,1,start_part2_fade - 4910>,//control point
 
-            0.1, < 0,0,0>,//start point
-            0.2, < 0,-2,0>,
-            0.3, < -2,0,-2>,
-            0.4, < 0,-2,0>,
-            0.5, < 2,0,2>,
-            0.6, < 0,1, 0>,
-            0.7, < 2,1, 0>,
-            0.8, < 0,1, 2>,
-            0.9, < 1,1, 2>,
-            1.0, < 2,1, 2>,//end point
+            4920, < 0,0, start_part2_fade - 4920>,//start point
+            5282, < 0,-2,start_part2_fade - 5282>,
+            5644, < -2,0,start_part2_fade - 5644>,
+            6006, < 0,-2,start_part2_fade - 6006>,
+            6368, < 2,0, start_part2_fade - 6368>,
+            6730, < 0,1, start_part2_fade - 6730>,
+            7092, < 2,1, start_part2_fade - 7092>,
+            7454, < 0,1, start_part2_fade - 7457>,
+            7816, < 1,1, start_part2_fade - 7816>,
+            8177, < 2,1, start_part2_fade - 8176>,//end point
 
-            1.2, < 4,1, 2>//control point
+            8640, < 4,1, start_part2_fade - 8640>//control point
         }
         init_ship((1-Beat2()))
         object { shipunion
             rotate 90*y
-            Spline_Trans(ShipSpline, (clock-start_part2_fade)/60, y, 0.1, 0.5)
-            translate <0, 0, start_part2_fade - clock>
+            rotate 180*x
+            rotate 180*z
+            Spline_Trans(ShipSpline, clock , y, 3, 3)
         }
     #break
 #end
