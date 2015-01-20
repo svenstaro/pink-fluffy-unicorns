@@ -246,7 +246,7 @@
             natural_spline
             -2, <0,2,start_part2_fade - 4910>,//control point
 
-            4920, <  0, 0, start_part2_fade - 4920>,//start point
+            4920, <  0, 0, start_part2_fade - 4920>,
             5282, <  0,-2, start_part2_fade - 5282>,
             5644, < -2, 0, start_part2_fade - 5644>,
             6006, <  0,-2, start_part2_fade - 6000>,
@@ -255,11 +255,11 @@
             7092, < -3, 1, start_part2_fade - 7092>,
             7454, <  0, 1, start_part2_fade - 7457>,
             7816, <  1, 1, start_part2_fade - 7816>,
-            8177, <  2, 2, start_part2_fade - 8176>,//end point
-            8640, <  0, 1, start_part2_fade - 8638>//control point
-            9000, < -1,-1, start_part2_fade - 8998>//control point
-            9400, <  0, 0, start_part2_fade - 9400>//control point
-            9840, <  0, 0, start_part2_fade - 9842>//control point
+            8177, <  2, 2, start_part2_fade - 8176>,
+            8640, <  0,-2, start_part2_fade - 8638>,
+            9000, < -1,-1, start_part2_fade - 8992>,
+            9400, <  0, 0, start_part2_fade - 9400>,
+            9840, <  0, 0, start_part2_fade - 9850>
 
         }
         init_ship((1-Beat2()))
