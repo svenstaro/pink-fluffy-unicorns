@@ -22,7 +22,10 @@ endif
 default: $(FRAME_TARGETS) movie
 
 movie:
-	ffmpeg -i media/strobe.ogg -framerate 60 -i $(OUTDIR)/$(PREFIX)%05d.png -y -r 60 -vcodec libx264 -preset veryslow -crf 22 -acodec copy -threads 0 $(OUTDIR)/scene.mkv
+	ffmpeg -i media/strobe.ogg -framerate 60 -i $(OUTDIR)/$(PREFIX)%05d.png \
+		-t 02:44 -y -r 60 -vcodec libx264 -preset veryslow -crf 22 -vf 'fade=t=out:st=160:d=4' \
+		-acodec libvorbis -qscale:a 8 -af 'afade=t=in:ss=0:d=3,afade=t=out:st=158:d=6' \
+		-threads 0 $(OUTDIR)/scene.mkv
 
 $(OUTDIR)/$(PREFIX)%.png: scene/*
 	mkdir -p $(OUTDIR)

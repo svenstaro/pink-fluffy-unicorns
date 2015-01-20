@@ -108,7 +108,7 @@ fog {
         #break
 
         // Part2
-        #range (end_part2_fade, end_song)
+        #range (end_part2_fade, fade_out_start)
             distance 100
         #break
 
