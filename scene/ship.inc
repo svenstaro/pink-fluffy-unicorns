@@ -241,12 +241,12 @@
             6368, < 2,-1, start_part2_fade - 6368>,
             6730, < 0,1, start_part2_fade - 6730>,
             7092, < 2,1, start_part2_fade - 7092>,
-            7454, < 0,1, start_part2_fade - 7457>,
-            7816, < 1,1, start_part2_fade - 7816>,
-            8177, < 2,2, start_part2_fade - 8176>,//end point
-            8640, < 0,1, start_part2_fade - 8638>//control point
-            9000, < -1,-1, start_part2_fade - 8998>//control point
-            9400, < 0,0, start_part2_fade - 9400>//control point
+            7454, < -1,0, start_part2_fade - 7457>,
+            7816, < -2,-1, start_part2_fade - 7816>,
+            8177, < -1,0, start_part2_fade - 8177>,
+            8640, < 0,1, start_part2_fade - 8640>,
+            9000, < -1,-1, start_part2_fade - 8998>,
+            9400, < 0,0, start_part2_fade - 9400>,
             9840, < 0,0, start_part2_fade - 9842>//control point
 
         }
