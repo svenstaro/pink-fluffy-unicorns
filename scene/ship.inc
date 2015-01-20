@@ -5,6 +5,7 @@
 #local core_height = 2;
 #local head_length = 4;
 
+
 #local engine = union {
     prism {
         0, 1, 5
@@ -227,7 +228,18 @@
 #switch (clock)
     #range (start_break_down_fade, start_part2_fade)
         init_ship(0)
-        object { shipunion }
+        object { shipunion
+            texture {
+                pigment {
+                    image_map {
+                        png "media/bunker_galvanized.png"
+                        map_type 1
+                        interpolate 2
+                    }
+                    scale 0.5
+                }
+            }
+        }
     #break
     #range (start_part2_fade, end_song)
         #declare ShipSpline = spline {
