@@ -68,7 +68,9 @@
     Since POV-Ray does come with any kind of Fourier transformation, we had to analyze the song by
     hand with Audacity (see~\ref{fig:main}). While this worked fairly well, we had to be very
     careful about the sub-second timings which are easy to offset by a few milliseconds which ruins
-    the whole experience. For beat extraction, we used Audacity's helpful beat finder tool (see~\ref{fig:beat}) which resulted in Audacity giving us annotations where the beats were located.
+    the whole experience. For beat extraction, we used Audacity's helpful beat finder tool
+    (see~\ref{fig:beat}) which resulted in Audacity giving us annotations where the beats were
+    located.
 
     In order to find the chords, we used the spectrogram view (see~\ref{fig:spectrogram}) which
     allowed us to visually find the correct positions.
@@ -97,51 +99,66 @@
     \section{Scenes}
     \subsection{Intro}
 
-    The intro is composed by creating a starfield (see \nameref{sec:starfield}) and moving the titles towards the camera.
+    The intro is composed by creating a starfield (see \nameref{sec:starfield}) and moving the
+    titles towards the camera.
 
-    The title is a simple union of text objects using timrom.ttf with a length of 5. To make
-    it look more interesting we applied a Polished\_Chrome texture with some bumps and a little
-    reflection for a shiny look. The camera is constantly moving forward, while the titles are
-    slowly moving towards the camera.
+    The title is a simple union of text objects using \texttt timrom.ttf with a length of 5. To
+    make it look more interesting we applied a \texttt Polished\_Chrome texture with some bumps and
+    a little reflection for a shiny look. The camera is constantly moving forward, while the titles
+    are slowly moving towards the camera.
 
     \subsection{Breakdown}
 
     In this part we use a fog with an interpolate on the fog distance to create a transition.
-    After that we combine a ship model (see \nameref{sec:ship}) and a procedural generated background (see \nameref{sec:background}) to visualize a space scene.
-    The camera slowly rotates around the spaceship to bring some motion into this scene.
+    After that we combine a ship model (see \nameref{sec:ship}) and a procedural generated
+    background (see \nameref{sec:background}) to visualize a space scene.  The camera slowly
+    rotates around the spaceship to bring some motion into this scene.
 
     \subsection{Part Two}
 
-    The second part is a combination of the previously used spaceship and a slightly alternated starfield with random colors. We used a spline (see \nameref{sec:spline}) to move the spaceship with the camera in a smooth way.
+    The second part is a combination of the previously used spaceship and a slightly alternated
+    starfield with random colors. We used a spline (see \nameref{sec:spline}) to move the spaceship
+    with the camera in a smooth way.
 
     \section{Creating the Starfield}
-    \label{sec:starfield})
-    We created a starfield by simply creating thousand spheres with random positions within the range \textless-50, -50, -50\textgreater and \textless50, 50, 2000\textgreater. In the intro those stars are white, while they get a random color in part two. All stars got a static position and aren't moving at all.
-    The wobbling was achieved by changing the ambient and the scale of those spheres according to the beat.
+    \label{sec:starfield}
+
+    We created a starfield by simply creating thousand spheres with random
+    positions within the range \textless-50, -50, -50\textgreater and \textless50, 50,
+    2000\textgreater. In the intro those stars are white, while they get a random color in part
+    two. All stars got a static position and aren't moving at all.  The wobbling was achieved by
+    changing the ambient and the scale of those spheres according to the beat.
 
     \section{Modeling the Spaceship}
     \label{sec:ship}
 
-    We didn't use any modeling tool for making the spaceship. Instead, we opted for a blocky, ``minecrafty'' style with almost no details. We used unions to combine mostly boxes and prisms into quite a basic shape. Even the most complex part, the claws, are built with boxes and prisms.
+    We didn't use any modeling tool for making the spaceship. Instead, we opted for a blocky,
+    ``minecrafty'' style with almost no details. We used unions to combine mostly boxes and prisms
+    into quite a basic shape. Even the most complex part, the claws, are built with boxes and
+    prisms.
 
-    The size of the ship itself and various parts is easily customizable through local values declared at the top of \texttt{ship.inc}.
+    The size of the ship itself and various parts is easily customizable through local values
+    declared at the top of \texttt{ship.inc}.
 
-    Most parts of the ship are actually mirror-symmetric, like the base body, the claws and the window in the front. To minimize effort, we just modeled those parts in half and then mirrored them using duplication and scaling.
+    Most parts of the ship are actually mirror-symmetric, like the base body, the claws and the
+    window in the front. To minimize effort, we just modeled those parts in half and then mirrored
+    them using duplication and scaling.
 
-    The only non-symmetric parts of the ship are the engines at the rear end. They are each modeled on their own, each having a distinctive color.
+    The only non-symmetric parts of the ship are the engines at the rear end. They are each modeled
+    on their own, each having a distinctive color.
 
     \section{Timing animations according to the song}
 
     In order to get accurate timings, we used milliseconds with POV-Ray. Since POV-Ray only
-    directly supports seconds, we multiplied all numbers by 1000 to get better resolution.
-    The first step towards that was figuring out the exact length of the song which is
-    \(3m32.067s\) which in turn is \(212.067s\). Since we wanted to use 60 FPS for fluid motion
-    this resulted in \(212.067s \times 60 = 12724\) frames. 
+    directly supports seconds, we multiplied all numbers by 1000 to get better resolution.  The
+    first step towards that was figuring out the exact length of the song which is \(3m32.067s\)
+    which in turn is \(212.067s\). Since we wanted to use 60 FPS for fluid motion this resulted in
+    \(212.067s \times 60 = 12724\) frames. 
 
     We then ran POV-Ray with the following settings:
     \begin{verbatim}+KFI1 +KFF12724 +KF12724.0\end{verbatim}
-    This allowed us to use the \texttt clock variable with actual frames which was very convenient
-    and turned out to be accurate enough for millisecond timings.
+    This allowed us to use the \texttt clock variable with actual frames
+    which was very convenient and turned out to be accurate enough for millisecond timings.
 
     For more convenience, we defined macros for beats and chords which would give us a float value
     of the position within a beat or chord respectively.
@@ -194,23 +211,36 @@
     \section{Background Generation}
     \label{sec:background}
 
-    To create a starfield and nebula we used a comination of 2 spheres and a sky\_sphere. \\ 
-    The sky\_sphere got a pigment that gets a perlin noise pigment map, which consists of three different colormaps. As a result we generate the procedural starfield. \\
-    In order to generate a nebula we create spheres and define the interior of those. There are two different spheres with different interior medias. \\
-    The first nebula is generated by creating a hollow, transparent sphere and filling it with an interior, which is defined by a media that got 2 different densities. A density is used to vary the density of particles inside a media.
-    By adding two densities we get the intersection of both densities. The first density is defined by a rampwave on a colormap, to get a nice transition for the colors. We decided to spice this up by translating, warping everything and translating it back. As a result we get a nice nebula effect. \\
-    The second density simply defined by a rampwave on a colormap and different density values inside the color map.
+    To create a starfield and nebula we used a comination of 2 spheres and a \texttt sky\_sphere.
 
-    The other sphere is quite similar to the first one, except that it got other colors, a single density and we actually vary the turbulence of density to the beat to create a wobbly effect on the nebula. 
-    We use some other values like octaves, frequency and labmda to create diffent nebula look.
+    The \texttt sky\_sphere got a pigment that gets a perlin noise pigment map, which consists of
+    three different colormaps. As a result we generate the procedural starfield.
+    
+    In order to generate a nebula we create spheres and define the interior of those. There are two
+    different spheres with different interior medias.
+
+    The first nebula is generated by creating a hollow, transparent sphere and filling it with an
+    interior, which is defined by a media that got 2 different densities. A density is used to vary
+    the density of particles inside a media.  By adding two densities we get the intersection of
+    both densities. The first density is defined by a rampwave on a colormap, to get a nice
+    transition for the colors. We decided to spice this up by translating, warping everything and
+    translating it back. As a result we get a nice nebula effect.
+    
+    The second density is defined by a \texttt ramp\_wave on a \texttt color\_map and different density
+    values inside the \texttt color\_map.
+
+    The other sphere is quite similar to the first one, except that it got other colors, a single
+    density and we actually vary the turbulence of density to the beat to create a wobbly effect on
+    the nebula.  We use some other values like octaves, frequency and labmda to create diffent
+    nebula look.
 
     \section{Ship movement}
     \label{sec:spline}
 
-    The movement of the last ship in the last scene has been achieved by using a spline. We
-    use a natural\_spline to create a smoother trajectory. The spline is applied by using
+    The movement of the last ship in the last scene has been achieved by using a spline. We use a
+    \texttt natural\_spline to create a smoother trajectory. The spline is applied by using \texttt
     Trans\_Spline with pretty high values for foresight and banking, because the ship actually
-    moves at -60*z per second.
+    moves at \(-60 \times z\) per second.
 
     \section{Summary}
 
