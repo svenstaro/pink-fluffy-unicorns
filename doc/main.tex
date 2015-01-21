@@ -88,6 +88,9 @@ Sven-Hendrik Haase, MN 6341873}
     The other sphere is quite similar to the first one, except that it got other colors, a single density and we actually vary the turbulence of density to the beat to create a wobbly effect on the nebula. 
     We use some other values like octaves, frequency and labmda to create diffent nebula look.
 
+    \section{Ship Movement}
+    The movement of the last ship in the last scene has been achieved by using a spline. We use a natural\_spline to create a smoother trajectory. The spline is applied by using Trans\_Spline with pretty high values for foresight and banking, because the ship actually moves at -60*y per second. The starfield is generated the same way it has been in the intro with random color values.
+
     \section{Summary}
 
 \end{document}
