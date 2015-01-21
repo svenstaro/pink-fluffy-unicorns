@@ -21,8 +21,8 @@
 \title{Space Rave Documentation}
 \subtitle{Interactive Visual Computing WiSe 14/15}
 \author{Arne Beer, MN 6489196\\
-Rafael Epplee, MN 6269560\\
-Sven-Hendrik Haase, MN 6341873}
+        Rafael Epplee, MN 6269560\\
+        Sven-Hendrik Haase, MN 6341873}
 
 \begin{document}
 \maketitle \section{Introduction}
@@ -44,26 +44,33 @@ Sven-Hendrik Haase, MN 6341873}
     \section{Extracting rythm information from the sound file}
 
     Since POV-Ray does come with any kind of Fourier transformation, we had to analyze the song by
-    hand with Audacity. While this worked fairly well, we had to be very careful about the
-    sub-second timings which are easy to offset by a few milliseconds which ruins the whole
-    experience.
+    hand with Audacity (see ~\ref{fig:main}). While this worked fairly well, we had to be very
+    careful about the sub-second timings which are easy to offset by a few milliseconds which ruins
+    the whole experience. For beat extraction, we used Audacity's helpful beat finder tool (see
+    ~\ref{fig:beat}) which resulted in Audacity giving us annotations where the beats were located.
+
+    In order to find the chords, we used the spectrogram view (see ~\ref{fig:spectrogram}) which
+    allowed us to visually find the correct positions.
 
     \begin{figure}[H]
         \centering
         \includegraphics[scale=0.4]{audacity_main}
         \caption{Audacity main view of the track}
+        \label{fig:main}
     \end{figure}
 
     \begin{figure}[H]
         \centering
         \includegraphics{audacity_beat}
         \caption{Beat analysis using Audacity's beat finder}
+        \label{fig:beat}
     \end{figure}
 
     \begin{figure}[H]
         \centering
         \includegraphics{audacity_spectrum}
         \caption{Spectrum view}
+        \label{fig:spectrogram}
     \end{figure}
 
     \section{Modeling the Spaceship}
