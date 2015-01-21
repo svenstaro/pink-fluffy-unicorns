@@ -1,20 +1,14 @@
 .PHONY: default tex2dvi dvi2ps ps2pdf
 
 
-default: tex2dvi dvi2ps ps2pdf clean open
+default: compile clean open
 
-tex2dvi:
-	latex *.tex
-
-dvi2ps:
-	dvips *.dvi
-
-ps2pdf:
-	ps2pdf *.ps
+compile:
+	rubber -d main.tex
 
 clean:
-	rm -rf *.dvi *.ps *.log *.aux *.out
+	rm *.log *.aux
 
 open:
-	evince *.pdf
+	evince main.pdf
 
