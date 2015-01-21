@@ -26,7 +26,14 @@ Sven-Hendrik Haase, MN 6341873}
 
     \section{Extracting rythm information from the sound file}
 
-    \section{Spaceship Modeling}
+    \section{Modeling the Spaceship}
+    We didn't use any modeling tool for making the spaceship. Instead, we opted for a blocky, ``minecrafty'' style with almost no details. We used unions to combine mostly boxes and prisms into quite a basic shape. Even the most complex part, the claws, are built with boxes and prisms.
+
+    The size of the ship itself and various parts is easily customizable through local values declared at the top of \texttt{ship.inc}.
+
+    Most parts of the ship are actually mirror-symmetric, like the base body, the claws and the window in the front. To minimize effort, we just modeled those parts in half and then mirrored them using duplication and scaling.
+
+    The only non-symmetric parts of the ship are the engines at the rear end. They are each modeled on their own, each having a distinctive color.
 
     \section{Timing animations according to the song}
 
