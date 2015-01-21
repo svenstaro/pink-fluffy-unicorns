@@ -264,6 +264,16 @@
         }
         init_ship((1-Beat2()))
         object { shipunion
+            texture {
+                pigment {
+                    image_map {
+                        png "media/bunker_galvanized.png"
+                        map_type 1
+                        interpolate 2
+                    }
+                    scale 0.5
+                }
+            }
             rotate 90*y
             rotate 180*x
             rotate 180*z
