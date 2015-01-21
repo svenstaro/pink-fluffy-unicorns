@@ -136,10 +136,63 @@
     \section{Timing animations according to the song}
 
     In order to get accurate timings, we used milliseconds with POV-Ray. Since POV-Ray only
-    directly supports seconds, we multiplied all numbers with 1000 to get better resolutions.
+    directly supports seconds, we multiplied all numbers by 1000 to get better resolution.
     The first step towards that was figuring out the exact length of the song which is
-    \(3m32.067s\)
-    which in turn is \(212.067s\).
+    \(3m32.067s\) which in turn is \(212.067s\). Since we wanted to use 60 FPS for fluid motion
+    this resulted in \(212.067s \times 60 = 12724\) frames. 
+
+    We then ran POV-Ray with the following settings:
+    \begin{verbatim}+KFI1 +KFF12724 +KF12724.0\end{verbatim}
+    This allowed us to use the \texttt clock variable with actual frames which was very convenient
+    and turned out to be accurate enough for millisecond timings.
+
+    For more convenience, we defined macros for beats and chords which would give us a float value
+    of the position within a beat or chord respectively.
+
+    The relevant section looks like this:
+
+    \begin{verbatim}
+#declare Beat1_Start = 33.96;
+#declare Beat1_Period = 28.14;
+
+#declare BGSynths_Start = 2426;
+#declare BGSynths_Period = 21.18; // frames
+
+#declare Beat2_Start = 4952;
+#declare Beat2_Period = 28.14; // frames
+
+#declare start_part1_fade = 0;
+#declare end_part1_fade = 800;
+#declare start_break_down_fade = 1800;
+#declare end_break_down_fade = 2400;
+#declare start_focus_break_down = 3000;
+#declare end_focus_break_down = 3800;
+#declare start_part2_fade = 4920;
+#declare end_part2_fade = 4951;
+#declare end_song = 12724;
+#declare fade_out_start = 9462;
+#declare fade_out_end = 9840;
+
+#macro Beat1()
+    mod((clock + Beat1_Start) * 10000, Beat1_Period * 10000) /
+        (Beat1_Period * 10000)
+#end
+
+#macro BGSynths()
+    mod((clock + BGSynths_Start) * 10000, BGSynths_Period * 10000) /
+        (BGSynths_Period * 10000)
+#end
+
+#macro BGSynths_2()
+    mod((clock + BGSynths_Start) * 10000, BGSynths_Period * 2 * 10000) /
+        (BGSynths_Period * 2 * 10000)
+#end
+
+#macro Beat2()
+    mod((clock + Beat2_Start) * 10000, Beat2_Period * 10000) /
+        (Beat2_Period * 10000)
+#end
+    \end{verbatim}
 
     \section{Background Generation}
 
