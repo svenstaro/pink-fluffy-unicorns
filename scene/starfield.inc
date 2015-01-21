@@ -9,7 +9,7 @@
                 }
                 finish { ambient 1 }
                 no_shadow
-                rotate <0, 0, 10*clock>
+                rotate <0, 0, 10>
                 scale Beat1()+0.2
                 translate VRand_In_Box(<-50, -50, -50>, <50, 50, 2000>, RandomSeed)
             }
@@ -25,7 +25,7 @@
                 }
                 finish { ambient 1+Beat2()*8 }
                 no_shadow
-                rotate <0, 0, 10*clock>
+                rotate <0, 0, 10>
                 scale Beat2()*2+6
                 translate VRand_In_Box(<100, 100, start_part2_fade+200>, <-100, -100, -5000>, RandomSeed)
             }
