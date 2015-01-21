@@ -63,10 +63,10 @@
         \label{fig:part2}
     \end{figure}
 
-    \section{Extracting rythm information from the sound file}
+    \section{Extracting Rythm Information From the Sound File}
 
-    Since POV-Ray does come with any kind of Fourier transformation, we had to analyze the song by
-    hand with Audacity (see~\ref{fig:main}). While this worked fairly well, we had to be very
+    Since POV-Ray does not come with any kind of Fourier transformation, we had to analyze the song
+    by hand with Audacity (see~\ref{fig:main}). While this worked fairly well, we had to be very
     careful about the sub-second timings which are easy to offset by a few milliseconds which ruins
     the whole experience. For beat extraction, we used Audacity's helpful beat finder tool
     (see~\ref{fig:beat}) which resulted in Audacity giving us annotations where the beats were
@@ -147,7 +147,7 @@
     The only non-symmetric parts of the ship are the engines at the rear end. They are each modeled
     on their own, each having a distinctive color.
 
-    \section{Timing animations according to the song}
+    \section{Timing Animations According To the Song}
 
     In order to get accurate timings, we used milliseconds with POV-Ray. Since POV-Ray only
     directly supports seconds, we multiplied all numbers by 1000 to get better resolution.  The
@@ -234,7 +234,7 @@
     the nebula.  We use some other values like octaves, frequency and labmda to create diffent
     nebula look.
 
-    \section{Ship movement}
+    \section{Ship Movement}
     \label{sec:spline}
 
     The movement of the last ship in the last scene has been achieved by using a spline. We use a
