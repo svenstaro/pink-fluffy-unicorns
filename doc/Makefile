@@ -1,13 +1,13 @@
 .PHONY: default tex2dvi dvi2ps ps2pdf
 
 
-default: compile clean open
+default: compile open
 
 compile:
 	rubber -d main.tex
 
 clean:
-	rm *.log *.aux
+	rubber --clean
 
 open:
 	evince main.pdf
